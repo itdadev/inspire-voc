@@ -1,4 +1,4 @@
-import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from 'react-responsive';
 
 export const IsDesktop = ({ children }) => {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
@@ -31,3 +31,4 @@ const bp = {
 };
 
 export const mq = (n) => `@media (min-width: ${bp[n]}px)`;
+export const mqMax = (n) => `@media (max-width: ${bp[n]}px)`;

@@ -1,6 +1,5 @@
-
-import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // NOTE: React Query - default settings
 const queryClientConfig = {
@@ -26,7 +25,5 @@ const queryClientConfig = {
 const queryClient = new QueryClient(queryClientConfig);
 
 export const QueryProvider = ({ children }) => {
-  return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 };

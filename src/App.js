@@ -1,40 +1,57 @@
-import {Route, Routes} from "react-router-dom";
-import {ThemeProvider} from "@emotion/react";
+import { ThemeProvider } from '@emotion/react';
 
-import AppTheme from "@/theme";
+import { createTheme } from '@mui/material';
+import AppTheme from '@/theme';
 
-import AuthLayout from "@/_auth/AuthLayout";
+import { Header } from '@/components/shared/Header';
+import { useDefaultLanguage } from '@/utils/Functions';
+import { IntlProvider } from 'react-intl';
 
-import RootLayout from "@/_root/RootLayout";
-import NotFound from "@/_root/pages/NotFound";
-
-import {Home} from "@/_root/pages/home";
-import {Login} from "@/_root/pages/user";
-import {MyPage} from "@/_auth/pages/user";
+import enUSMsg from '@/utils/languages/en-US.json';
+import koMsg from '@/utils/languages/ko.json';
+import chHansMsg from '@/utils/languages/ch-hans.json';
+import chHantMsg from '@/utils/languages/ch-hant.json';
+import jaMsg from '@/utils/languages/ja.json';
+import { LOCAL_STORAGE_LANGUAGE } from '@/constants/storageKey';
+import { Routers } from '@/_root';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
-  console.log(process.env.REACT_APP_BASE_URL);
+  const navigate = useNavigate();
+
+  const customMuiTheme = createTheme(AppTheme);
+  const defaultLanguage = useDefaultLanguage();
+
+  const locale =
+    localStorage.getItem(LOCAL_STORAGE_LANGUAGE) !== null
+      ? localStorage.getItem(LOCAL_STORAGE_LANGUAGE)
+      : defaultLanguage;
+
+  const messages = {
+    en: enUSMsg,
+    ko: koMsg,
+    'zh-hans': chHansMsg,
+    'zh-hant': chHantMsg,
+    ja: jaMsg,
+  }[locale];
+
+  useEffect(() => {
+    navigate('/bus/myeong-dong_daerim/11:00');
+  }, [navigate]);
 
   return (
-    <ThemeProvider theme={AppTheme}>
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />}/>
+    defaultLanguage && (
+      <IntlProvider locale={locale} messages={messages} defaultLocale={defaultLanguage}>
+        <ThemeProvider theme={customMuiTheme}>
+          <div>
+            <Header />
 
-          {/* NOTE: 로그인없이 접근할 수 있는 페이지 */}
-          <Route element={<RootLayout/>}>
-            <Route path="/login" element={<Login/>}/>
-          </Route>
-
-          {/* NOTE: 로그인해야 접근할 수 있는 페이지 */}
-          <Route element={<AuthLayout/>}>
-            <Route path="/mypage" element={<MyPage/>}/>
-          </Route>
-
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-    </ThemeProvider>
+            <Routers />
+          </div>
+        </ThemeProvider>
+      </IntlProvider>
+    )
   );
 }
 

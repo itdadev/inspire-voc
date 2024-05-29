@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter} from "react-router-dom";
-
-import {ReactQueryDevtools} from "react-query/devtools";
-import {QueryProvider} from "@/lib/react-query/QueryProvider";
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import GlobalStyles from "@/assets/styles/GlobalStyles";
+import GlobalStyles from '@/assets/styles/GlobalStyles';
+import { QueryProvider } from '@/lib/react-query/QueryProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 
 root.render(
   <React.StrictMode>
@@ -19,12 +16,8 @@ root.render(
         {/* NOTE: Globally resetting CSS styles*/}
         <GlobalStyles />
 
-        {/* NOTE: react query dev tools */}
-        <ReactQueryDevtools initialIsOpen={false} position="bottom-right"/>
-
-        <App/>
+        <App />
       </QueryProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
-

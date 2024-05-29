@@ -1,20 +1,20 @@
 // NOTE: 메인 화면 부모 컴포넌트입니다. 섹션 1, 2, 3을 import합니다.
 import React from 'react';
-import styled from "@emotion/styled";
-import {Link} from "react-router-dom";
+import styled from '@emotion/styled';
+import { image } from '@/theme';
+import { ImageFigure } from '@/components/ui/item';
+import { Main } from '@/_root/pages/main';
 
-const Container = styled.div(({theme}) => ({
-  color: theme.color.primary
+const Container = styled.div(() => ({
+  minHeight: '100vh',
 }));
 
 const Home = () => {
   return (
     <Container>
-      Hello Developer!
+      <ImageFigure src={image.bannerImage} alt="" ratio="9 / 2" local />
 
-      <div>
-        <Link to="login">로그인</Link>
-      </div>
+      <Main />
     </Container>
   );
 };
