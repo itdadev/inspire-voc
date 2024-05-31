@@ -3,8 +3,6 @@ import { Controller } from 'react-hook-form';
 import { InputAdornment, TextField } from '@mui/material';
 import styled from '@emotion/styled';
 
-import { mq } from '@/lib/react-responsive/mediaQuery';
-
 const TextInputWrapper = styled.div(() => ({
   minHeight: '8rem',
   width: '100%',
@@ -55,15 +53,6 @@ const TextInput = ({
                 endAdornment: endAdornment && (
                   <InputAdornment position="end">{endAdornment}</InputAdornment>
                 ),
-              }}
-              InputLabelProps={{
-                sx: {
-                  fontSize: '1.4rem',
-
-                  [mq('desktop')]: {
-                    fontSize: '1.6rem',
-                  },
-                },
               }}
             />
           );

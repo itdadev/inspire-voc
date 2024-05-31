@@ -7,33 +7,33 @@ import { LOCAL_STORAGE_LANGUAGE } from '@/constants/storageKey';
 import { HEADER_LANGUAGE_MODAL_ZINDEX } from '@/constants/zIndex';
 import { mq } from '@/lib/react-responsive/mediaQuery';
 import styled from '@emotion/styled';
+import { SwitchLanguagesText } from '@/lib/react-intl/TranslatedTexts';
 
 const LanguageContainer = styled.div(() => ({
   position: 'absolute',
-  left: 0,
+  right: 0,
   zIndex: HEADER_LANGUAGE_MODAL_ZINDEX,
   wordBreak: 'keep-all',
+  background: 'white',
+  boxShadow:
+    '0 0 0 0 rgba(0, 0, 0, 0.03), 0 8px 18px 0 rgba(0, 0, 0, 0.03), 0 33px 33px 0 rgba(0, 0, 0, 0.03), 0 75px 45px 0 rgba(0, 0, 0, 0.02)',
+  border: '1px solid #EEE',
+  borderRadius: '1rem',
+  marginTop: '0.8rem',
+  minWidth: '10rem',
 
   [mq('desktop')]: {
-    background: 'white',
-    borderRadius: '1rem',
-    border: '1px solid #EEE',
-    boxShadow:
-      '0 0 0 0 rgba(0, 0, 0, 0.03), 0 8px 18px 0 rgba(0, 0, 0, 0.03), 0 33px 33px 0 rgba(0, 0, 0, 0.03), 0 75px 45px 0 rgba(0, 0, 0, 0.02)',
     minWidth: '16.4rem',
-    left: 'auto',
-    right: 0,
-    marginTop: '0.8rem',
   },
 }));
 
-const LanguageHeader = styled.div(({ theme }) => ({
+const LanguageHeader = styled.div(() => ({
+  display: 'none',
   textAlign: 'left',
   color: 'black',
   fontSize: '1.2rem',
   fontWeight: 700,
   letterSpacing: '0.01rem',
-  display: 'none',
   textTransform: 'uppercase',
   padding: '1.6rem 0 0.8rem',
   margin: '0 1.6rem',
@@ -54,11 +54,7 @@ const Language = styled.button(() => ({
   textAlign: 'right',
   color: 'black',
   zIndex: 1900,
-  margin: '4rem 0 0 1rem',
-
-  [mq('desktop')]: {
-    margin: 0,
-  },
+  margin: 0,
 }));
 
 const LanguageIn = styled.div(() => ({
@@ -130,7 +126,9 @@ const LanguageModal = ({ langModalRef, languageModal, setLanguageModal }) => {
 
       {languageModal && (
         <LanguageContainer>
-          <LanguageHeader>switch language</LanguageHeader>
+          <LanguageHeader>
+            <SwitchLanguagesText />
+          </LanguageHeader>
 
           <List component="div" aria-label="secondary mailbox folder">
             {LANGUAGE_LIST?.map((language) => {

@@ -24,7 +24,7 @@ const Container = styled.div(({ noPadding, width }) => ({
     minWidth: '40rem',
     maxWidth: '90%',
     width: width ? width : 'fit-content',
-    padding: noPadding ? 0 : '4.8rem',
+    padding: noPadding ? 0 : '3rem',
   },
 }));
 

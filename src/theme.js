@@ -1,5 +1,6 @@
 // NOTE: 공통 이미지
 import { mq } from '@/lib/react-responsive/mediaQuery';
+import { changePrimaryFontFamily, changeSecondaryFontFamily } from '@/utils/Functions';
 
 export const image = {
   // NOTE: icons
@@ -9,6 +10,7 @@ export const image = {
   modalCloseWhiteIcon: require('@/assets/icons/modal-close-white.svg'),
   fileUploadIcon: require('@/assets/icons/file-upload-icon.svg'),
   closeLineIcon: require('@/assets/icons/close-line.svg'),
+  logoWhite: require('@/assets/icons/logo-white-full.svg'),
 
   // NOTE: images
   bannerImage: require('@/assets/images/banner-image.png'),
@@ -20,7 +22,9 @@ export const color = {
   point01: '#6F5B7F',
   point02: '#7C8FAC',
   point03: '#9C7BB7',
+  point04: '#E7AF1B',
   grey01: '#454545',
+  grey02: '#9b9b9b',
   grey03: '#CDCCCC',
   white: '#ffffff',
   red01: '#EB3434',
@@ -30,7 +34,8 @@ export const AppTheme = {
   image,
   color,
   fontFamily: {
-    // NOTE: 공통 폰트 스타일
+    primaryFont: changePrimaryFontFamily(),
+    secondaryFont: changeSecondaryFontFamily(),
   },
   fontWeight: {
     // NOTE: 공통 폰트 굵기
@@ -50,6 +55,7 @@ export const AppTheme = {
     },
   },
   typography: {
+    fontFamily: changePrimaryFontFamily(),
     htmlFontSize: 10,
 
     [mq('mobile')]: {
@@ -65,6 +71,18 @@ export const AppTheme = {
       styleOverrides: {
         root: () => ({
           width: '100%',
+        }),
+      },
+    },
+    MuiSnackbar: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          top: '6rem !important',
+
+          '& .MuiAlert-root': {
+            background: theme.color.point02,
+            borderRadius: '1rem',
+          },
         }),
       },
     },
@@ -111,21 +129,20 @@ export const AppTheme = {
       styleOverrides: {
         root: ({ theme }) => ({
           color: theme.color.grey01,
+          fontSize: '1.6rem',
         }),
       },
     },
     MuiSelect: {
       styleOverrides: {
         root: () => ({
-          fontSize: '1.4rem',
+          fontSize: '1.4rem !important',
         }),
       },
     },
     MuiMenuItem: {
       styleOverrides: {
-        root: () => ({
-          fontSize: '1.4rem',
-        }),
+        root: () => ({}),
       },
     },
     MuiModal: {

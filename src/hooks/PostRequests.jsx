@@ -1,7 +1,8 @@
-import { useMutation } from '@tanstack/react-query';
-import { ADD_VOC_API_URL } from '@/constants/apiUrls';
-import axios from 'axios';
 import { useCallback } from 'react';
+import axios from 'axios';
+import { useMutation } from '@tanstack/react-query';
+
+import { ADD_VOC_API_URL } from '@/constants/apiUrls';
 
 export function usePostVoCForm() {
   const postVocForm = useCallback(async (data) => {
@@ -11,10 +12,13 @@ export function usePostVoCForm() {
   return useMutation({
     mutationFn: postVocForm,
     onSuccess: (data) => {
-      console.log(data);
+      if (data.data.code === 200) {
+        return true;
+      }
     },
     onError: (error) => {
       console.log(error);
+      return false;
     },
   });
 }

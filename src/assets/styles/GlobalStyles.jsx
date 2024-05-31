@@ -1,8 +1,12 @@
 import { css, Global } from '@emotion/react';
 // phone input styling
 import 'react-phone-number-input/style.css';
+import Theme from '@/theme';
 
 const style = css`
+  //  Nanum Sqaure
+  @import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
   html {
     font-size: 62.5%;
     box-sizing: border-box;
@@ -11,6 +15,7 @@ const style = css`
   }
 
   body {
+    font-family: ${Theme.fontFamily.primaryFont};
     overflow-x: hidden;
     box-sizing: border-box;
     font-size: 1.6rem;

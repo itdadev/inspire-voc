@@ -3,6 +3,7 @@ import { CommonModal } from '@/components/ui/modal/index';
 import { DangerouslyHtml } from '@/components/ui/item';
 import styled from '@emotion/styled';
 import { mq, mqMax } from '@/lib/react-responsive/mediaQuery';
+import { PrivacyPolicyText } from '@/lib/react-intl/TranslatedTexts';
 
 const ModalWrapper = styled.div(() => ({
   display: 'flex',
@@ -185,7 +186,7 @@ const PrivacyPolicyModal = ({ openModal, setOpenModal }) => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         fixCloseButton
-        modalName="privacy policy"
+        modalName={<PrivacyPolicyText />}
       >
         <ModalWrapper>
           <div style={{ width: '100%', textAlign: 'left' }}>

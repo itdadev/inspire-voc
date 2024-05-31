@@ -1,16 +1,54 @@
 {
-  "lang-voice-of-customer" : "Voice of Customer",
-  "lang-page-description-text" : "At INSPIRE Entertainment Resort, we value the feedback and voices of our guests through our dedicated Customer Center.",
-  "lang-switch-languages-text" : "Switch Languages",
-  "lang-first-name-text" : "First Name",
-  "lang-last-name-text" : "Last Name",
-  "lang-phone-number-text" : "Phone Number",
-  "lang-option-text" : "Option",
-  "lang-email-text" : "Email",
-  "lang-title-text" : "Title",
-  "lang-content-text" : "Content",
-  "lang-upload-files-text" : "Upload Files",
-  "lang-agree-terms-conditions-text" : "I agree to Terms and Conditions",
-  "lang-terms-conditions-text" : "Terms & Conditions",
-  "lang-submit-text" : "Submit"
+  "lang-voice-of-customer" : "客户之声",
+  "lang-page-description-text" : "在INSPIRE娱乐度假村，\n我们通过专门的客户中心重视客户的反馈和声音。",
+  "lang-switch-languages-text" : "切换语言",
+
+  "lang-first-name-text" : "名字",
+  "lang-last-name-text" : "姓氏",
+  "lang-phone-number-text" : "电话号码",
+  "lang-category-text" : "类别",
+  "lang-option-text" : "选项",
+  "lang-time-text" : "时间",
+  "lang-email-text" : "电子邮件",
+  "lang-title-text" : "标题",
+  "lang-content-text" : "内容",
+  "lang-upload-files-text" : "上传文件",
+  "lang-agree-privacy-policy-text" : "我同意隐私政策",
+  "lang-privacy-policy-text" : "隐私政策",
+  "lang-submit-text" : "提交",
+
+  "lang-first-name-placeholder-text" : "请输入名字",
+  "lang-last-name-placeholder-text" : "请输入姓氏",
+  "lang-phone-number-placeholder-text" : "请输入电话号码",
+  "lang-email-placeholder-text" : "请输入电子邮件地址",
+  "lang-title-placeholder-text" : "请输入标题",
+  "lang-content-placeholder-text" : "请输入内容",
+  "lang-upload-files-placeholder-text" : "最大10MB，5个文件",
+
+  "lang-first-name-required-text" : "请输入名字",
+  "lang-last-name-required-text" : "请输入姓氏",
+  "lang-phone-number-required-text" : "请输入电话号码",
+  "lang-category-required-text" : "请输入类别",
+  "lang-time-required-text" : "请输入时间",
+  "lang-option-required-text" : "请输入选项",
+  "lang-email-invalid-text" : "请检查电子邮件格式",
+  "lang-email-required-text" : "请输入电子邮件地址",
+  "lang-title-required-text" : "标题是必需的",
+  "lang-content-required-text" : "内容是必需的",
+  "lang-privacy-policy-required-text" : "请同意隐私政策",
+  "lang-upload-files-limit-text" : "您最多可以上传五个文件",
+
+  "lang-success-submit-message-1" : "您的表格已成功提交！",
+  "lang-success-submit-message-2" : "感谢您参与调查。",
+
+  "lang-not-found-desc-1" : "使用网站时给您带来不便，我们深表歉意。",
+  "lang-not-found-desc-2" : "您请求的页面已被删除、移动或地址不正确。",
+  "lang-not-found-desc-3" : "请导航到其他页面或再次检查地址。",
+  "lang-go-to-voc-text" : "转到客户之声页面"
 }
+
+
+
+
+
+

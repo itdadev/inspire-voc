@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 import styled from '@emotion/styled';
 import { Controller } from 'react-hook-form';
 import { Checkbox, FormControlLabel, FormHelperText } from '@mui/material';
+import { useIntl } from 'react-intl';
+import { PrivacyPolicyText } from '@/lib/react-intl/TranslatedTexts';
 
 const CheckBoxWrapper = styled.div(({ theme }) => ({
   display: 'flex',
@@ -16,15 +18,16 @@ const CheckBoxWrapper = styled.div(({ theme }) => ({
 
 const Wrapper = styled.div(() => ({
   display: 'flex',
-  alignItems: 'center',
-  flexWrap: 'wrap',
   gap: '1rem',
+  flexWrap: 'wrap',
 }));
 
 const KeepInTouchFormTermsOfUse = styled.button(({ theme }) => ({
   borderBottom: `1px solid ${theme.color.grey01}`,
 }));
 const AgreeTerm = ({ control, errors, setPrivacyPolicyOpen }) => {
+  const intl = useIntl();
+
   const openTerms = useCallback(() => {
     setPrivacyPolicyOpen(true);
   }, [setPrivacyPolicyOpen]);
@@ -39,15 +42,18 @@ const AgreeTerm = ({ control, errors, setPrivacyPolicyOpen }) => {
             render={({ field }) => {
               return (
                 <FormControlLabel
-                  control={<Checkbox onChange={field.onChange} name="agreeToTerm" />}
-                  label="I agree to Terms and Conditions"
+                  value={field.value}
+                  control={<Checkbox {...field} checked={field.value} />}
+                  label={intl.formatMessage({
+                    id: 'lang-agree-privacy-policy-text',
+                  })}
                 />
               );
             }}
           />
 
           <KeepInTouchFormTermsOfUse type="button" onClick={openTerms}>
-            Terms & Conditions
+            <PrivacyPolicyText />
           </KeepInTouchFormTermsOfUse>
         </Wrapper>
       </CheckBoxWrapper>

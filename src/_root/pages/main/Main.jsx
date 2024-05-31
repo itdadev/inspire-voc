@@ -1,9 +1,11 @@
 import React from 'react';
+import styled from '@emotion/styled';
 
 import { CommonDescOne, CommonTitleOne } from '@/components/ui/text/CommonTexts';
 import { CommonContainer } from '@/components/ui/container';
-import styled from '@emotion/styled';
-import VocForm from '@/_root/pages/main/VocForm';
+import { VocForm } from '@/_root/pages/main/index';
+
+import { PageDescriptionText, VoiceOfCustomerText } from '@/lib/react-intl/TranslatedTexts';
 
 const Wrapper = styled.div(() => ({
   padding: '8rem 0',
@@ -16,6 +18,8 @@ const TitleWrapper = styled.div(() => ({
   justifyContent: 'center',
   gap: '2rem 0',
   marginBottom: '8rem',
+  whiteSpace: 'break-spaces',
+  textAlign: 'center',
 }));
 
 const Main = () => {
@@ -23,11 +27,12 @@ const Main = () => {
     <CommonContainer>
       <Wrapper>
         <TitleWrapper>
-          <CommonTitleOne>Voice of Customer</CommonTitleOne>
+          <CommonTitleOne>
+            <VoiceOfCustomerText />
+          </CommonTitleOne>
 
           <CommonDescOne>
-            At INSPIRE Entertainment Resort, we value the feedback and voices of our guests through
-            our dedicated Customer Center.
+            <PageDescriptionText />
           </CommonDescOne>
         </TitleWrapper>
 

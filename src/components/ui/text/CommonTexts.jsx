@@ -4,7 +4,7 @@ import { mq } from '@/lib/react-responsive/mediaQuery';
 export const CommonTitleOne = styled.h2(({ theme, lowercase }) => ({
   fontWeight: theme.fontWeight.extraBold,
   textTransform: lowercase ? 'initial' : 'uppercase',
-  fontSize: '2.4rem',
+  fontSize: '3.2rem',
 
   [mq('tablet')]: {
     fontSize: '3.6rem',
@@ -24,7 +24,7 @@ export const CommonTitleTwo = styled.h2(({ theme, lowercase }) => ({
   },
 }));
 
-export const CommonTitleThree = styled.h2(({ theme, lowercase }) => ({
+export const CommonTitleThree = styled.h2(({ theme }) => ({
   fontWeight: theme.fontWeight.bold,
   fontSize: '2rem',
 
@@ -33,9 +33,11 @@ export const CommonTitleThree = styled.h2(({ theme, lowercase }) => ({
   },
 }));
 
-export const CommonDescOne = styled.h2(({ theme, lowercase }) => ({
+export const CommonDescOne = styled.h2(({ theme }) => ({
   fontWeight: theme.fontWeight.regular,
   fontSize: '1.6rem',
+  lineHeight: '1.5',
+  fontFamily: theme.fontFamily.secondaryFont,
 
   [mq('tablet')]: {
     fontSize: '1.8rem',

@@ -1,9 +1,16 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
 import { image } from '@/theme';
 import styled from '@emotion/styled';
-import { DOWNLOAD_FILE_LIST_API_URL, UPLOAD_FILE_LIST_API_URL } from '@/constants/apiUrls';
-import axios from 'axios';
 import { RiCloseLine } from '@remixicon/react';
+import { Alert } from '@mui/material';
+
+import { DOWNLOAD_FILE_LIST_API_URL, UPLOAD_FILE_LIST_API_URL } from '@/constants/apiUrls';
+import {
+  UploadFilesLimitRequiredText,
+  UploadFilesPlaceholderText,
+  UploadFilesText,
+} from '@/lib/react-intl/TranslatedTexts';
 
 const Container = styled.div(() => ({
   margin: '2rem 0',
@@ -24,7 +31,7 @@ const List = styled.div(() => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '1rem 0',
-  margin: '2rem 0',
+  margin: '1rem 0 2rem',
   padding: '1rem 0',
 }));
 
@@ -46,15 +53,31 @@ const FileName = styled.a(({ theme }) => ({
 const CloseIcon = styled(RiCloseLine)(({ theme }) => ({
   cursor: 'pointer',
   transition: 'all 0.3s',
+  color: theme.color.grey02,
 
   '&:hover': {
     color: theme.color.red01,
   },
 }));
 
+const StyledAlert = styled(Alert)(() => ({
+  margin: '1rem 0',
+}));
+
 const FileUpload = ({ fileList, setFileList }) => {
+  const [maxFileLengthAlert, setMaxFileLengthAlert] = useState(false);
+
   const uploadFileList = useCallback(
     async (e) => {
+      if (e.target.files.length === 0) {
+        return;
+      }
+
+      if (fileList?.length + e.target.files.length > 5) {
+        setMaxFileLengthAlert(true);
+        return;
+      }
+
       const formData = new FormData();
 
       Array.from(e.target.files).map((file) => {
@@ -64,10 +87,12 @@ const FileUpload = ({ fileList, setFileList }) => {
       const { status, data } = await axios.post(UPLOAD_FILE_LIST_API_URL, formData);
 
       if (status === 200) {
-        setFileList(data);
+        const wholeArr = fileList.concat(data);
+
+        setFileList(wholeArr);
       }
     },
-    [setFileList]
+    [setFileList, fileList]
   );
 
   const deleteFileFromList = useCallback(
@@ -79,16 +104,30 @@ const FileUpload = ({ fileList, setFileList }) => {
     [fileList, setFileList]
   );
 
+  useEffect(() => {
+    if (fileList.length > 5) {
+      setMaxFileLengthAlert(true);
+    } else {
+      setMaxFileLengthAlert(false);
+    }
+  }, [fileList]);
+
   return (
     <Container>
       <Label htmlFor="images">
         <img src={image.fileUploadIcon.default} alt="" width={30} />
-        Upload files (max 10MB, 5 files)
+        <UploadFilesText /> (<UploadFilesPlaceholderText />)
       </Label>
 
       <input type="file" id="images" onChange={uploadFileList} multiple="multiple" />
 
-      {fileList && (
+      {maxFileLengthAlert && (
+        <StyledAlert severity="warning">
+          <UploadFilesLimitRequiredText />
+        </StyledAlert>
+      )}
+
+      {fileList?.length > 0 && (
         <List>
           {fileList?.map((file) => {
             return (
@@ -99,7 +138,7 @@ const FileUpload = ({ fileList, setFileList }) => {
                   {file.origin_file_name}
                 </FileName>
 
-                <CloseIcon size={20} onClick={() => deleteFileFromList(file)} />
+                <CloseIcon size={24} onClick={() => deleteFileFromList(file)} />
               </Item>
             );
           })}

@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { LANGUAGE_LIST } from '@/constants/languages';
 import { LOCAL_STORAGE_LANGUAGE } from '@/constants/storageKey';
+import dayjs from 'dayjs';
 
 const browserLanguageSwitch = () => {
   if (typeof navigator === 'undefined') {
@@ -23,13 +24,13 @@ const browserLanguageSwitch = () => {
       return 'ko';
 
     case 'zh':
-      return 'zh-hans';
+      return 'zh_hans';
 
     case 'zh-CN':
-      return 'zh-hans';
+      return 'zh_hans';
 
     case 'zh-TW':
-      return 'zh-hant';
+      return 'zh_hant';
 
     case 'en':
       return 'en';
@@ -94,12 +95,6 @@ export function useDefaultLanguage() {
     // Check Browser Language
     code = browserLanguageSwitch();
   }
-
-  // if (code === undefined) {
-  //   // Ip Information
-  //   code = country_check(ipInformation?.countryCode);
-  // }
-
   return code;
 }
 
@@ -112,11 +107,77 @@ export function switchSlashToEmptySpace(value) {
 }
 
 export function findLastFalseIndex(arr) {
-  for (let i = arr.length - 1; i >= 0; i--) {
-    if (arr[i] === false) {
+  for (let i = arr?.length - 1; i >= 0; i--) {
+    if (arr?.[i] === false) {
       return i;
     }
   }
 
   return -1;
+}
+
+export function getTimeIndex(arr, option2) {
+  const today = dayjs();
+
+  const formattedToday = today.format('YYYY-MM-DD');
+
+  const now = dayjs(`${formattedToday} ${option2}:00`);
+
+  const startTimeArr = arr?.map((time) => {
+    const startTime = time.name.split(' ~ ')[0];
+
+    const startDateFormat = `${formattedToday}T${startTime}:00+09:00`;
+
+    return now.isBefore(dayjs(startDateFormat));
+  });
+
+  return findLastFalseIndex(startTimeArr);
+}
+
+export function changePrimaryFontFamily() {
+  const lang = localStorage.getItem(LOCAL_STORAGE_LANGUAGE);
+
+  switch (lang) {
+    case 'en':
+      return "'Noto Sans', sans-serif";
+
+    case 'ko':
+      return "'Noto Sans KR', sans-serif";
+
+    case 'ja':
+      return "'Noto Sans JP', sans-serif";
+
+    case 'zh_hant':
+      return "'Noto Sans SC', sans-serif";
+
+    case 'zh_hans':
+      return "'Noto Sans SC', sans-serif";
+
+    default:
+      return "'Noto Sans', sans-serif";
+  }
+}
+
+export function changeSecondaryFontFamily() {
+  const lang = localStorage.getItem(LOCAL_STORAGE_LANGUAGE);
+
+  switch (lang) {
+    case 'en':
+      return "'Arsenal', sans-serif";
+
+    case 'ko':
+      return "'NanumSquare', 'Noto Sans KR', sans-serif";
+
+    case 'ja':
+      return "'Noto Sans JP', sans-serif";
+
+    case 'zh_hant':
+      return "'Noto Sans SC', sans-serif";
+
+    case 'zh_hans':
+      return "'Noto Sans SC', sans-serif";
+
+    default:
+      return "'Arsenal', sans-serif";
+  }
 }

@@ -35,13 +35,22 @@ const SelectInput = (props) => {
               <StyledSelectInput
                 {...field}
                 {...props}
+                defaultValue=""
                 label={props.label}
                 placeholder={props.placeholder}
                 MenuProps={{ disableScrollLock: true }}
               >
-                {props.arr.map((el) => {
+                {props.name === 'time_key' && props.arr === undefined && (
+                  <MenuItem value="">Please select route first</MenuItem>
+                )}
+
+                {props.name === 'route_key' && props.arr === undefined && (
+                  <MenuItem value="">Please select category first</MenuItem>
+                )}
+
+                {props.arr?.map((el) => {
                   return (
-                    <MenuItem key={el.key} value={el.key}>
+                    <MenuItem key={el.key} value={JSON.stringify(el.key)}>
                       {el.name}
                     </MenuItem>
                   );
