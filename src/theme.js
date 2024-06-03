@@ -23,6 +23,7 @@ export const color = {
   point02: '#7C8FAC',
   point03: '#9C7BB7',
   point04: '#E7AF1B',
+  black01: '#222222',
   grey01: '#454545',
   grey02: '#9b9b9b',
   grey03: '#CDCCCC',
@@ -138,11 +139,6 @@ export const AppTheme = {
         root: () => ({
           fontSize: '1.4rem !important',
         }),
-      },
-    },
-    MuiMenuItem: {
-      styleOverrides: {
-        root: () => ({}),
       },
     },
     MuiModal: {

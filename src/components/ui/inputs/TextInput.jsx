@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { Controller } from 'react-hook-form';
 import { InputAdornment, TextField } from '@mui/material';
 import styled from '@emotion/styled';
+import { useIntl } from 'react-intl';
 
 const TextInputWrapper = styled.div(() => ({
   minHeight: '8rem',
@@ -22,6 +23,8 @@ const TextInput = ({
   multiline,
   required,
 }) => {
+  const intl = useIntl();
+
   return (
     <TextInputWrapper>
       <Controller
@@ -45,7 +48,9 @@ const TextInput = ({
               helperText={errors[name]?.message}
               fullWidth
               multiline={multiline}
-              placeholder={placeholder}
+              placeholder={intl.formatMessage({
+                id: placeholder,
+              })}
               inputProps={{ maxLength: maxLength }}
               required={required}
               InputProps={{

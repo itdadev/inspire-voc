@@ -188,9 +188,7 @@ const VocForm = () => {
           control={control}
           name="first_name"
           label={<FirstNameText />}
-          placeholder={intl.formatMessage({
-            id: 'lang-first-name-required-text',
-          })}
+          placeholder="lang-first-name-placeholder-text"
           maxLength={15}
         />
 
@@ -198,9 +196,7 @@ const VocForm = () => {
           control={control}
           name="last_name"
           label={<LastNameText />}
-          placeholder={intl.formatMessage({
-            id: 'lang-last-name-required-text',
-          })}
+          placeholder="lang-last-name-placeholder-text"
           maxLength={15}
         />
       </TextWrapper>
@@ -214,13 +210,13 @@ const VocForm = () => {
               <PhoneInput
                 {...field}
                 placeholder={intl.formatMessage({
-                  id: 'lang-phone-number-required-text',
+                  id: 'lang-phone-number-placeholder-text',
                 })}
                 inputComponent={PhoneNumberInput}
                 name="country_code"
                 label={<PhoneNumberText />}
-                error={!!errors['phone'] || !!errors['country_code']}
-                helperText={errors['phone']?.message || errors['country_code']?.message}
+                error={!!errors['phone']}
+                helperText={errors['phone']?.message}
                 defaultCountry={'KR'}
                 labels={en}
                 control={control}
@@ -262,18 +258,14 @@ const VocForm = () => {
         control={control}
         name="email"
         label={<EmailText />}
-        placeholder={intl.formatMessage({
-          id: 'lang-email-required-text',
-        })}
+        placeholder="lang-email-placeholder-text"
       />
 
       <TextInput
         control={control}
         name="title"
         label={<TitleText />}
-        placeholder={intl.formatMessage({
-          id: 'lang-title-required-text',
-        })}
+        placeholder="lang-title-placeholder-text"
       />
 
       <TextInput
@@ -282,9 +274,7 @@ const VocForm = () => {
         label={<ContentText />}
         rows={6}
         multiline
-        placeholder={intl.formatMessage({
-          id: 'lang-content-required-text',
-        })}
+        placeholder="lang-content-placeholder-text"
       />
 
       <FileUpload fileList={fileList} setFileList={setFileList} />

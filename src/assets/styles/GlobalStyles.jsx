@@ -23,6 +23,7 @@ const style = css`
     margin: 0;
     word-break: keep-all;
     max-width: 100vw;
+    color: ${Theme.color.black01};
   }
 
   h1,
@@ -57,6 +58,11 @@ const style = css`
     font: inherit;
     cursor: pointer;
     background: inherit;
+  }
+
+  //  Phone input country icon height
+  .PhoneInputCountry {
+    max-height: 5.6rem;
   }
 `;
 
