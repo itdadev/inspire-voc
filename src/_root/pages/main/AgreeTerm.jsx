@@ -5,6 +5,10 @@ import { Checkbox, FormControlLabel, FormHelperText } from '@mui/material';
 import { useIntl } from 'react-intl';
 import { PrivacyPolicyText } from '@/lib/react-intl/TranslatedTexts';
 
+const Container = styled.div(() => ({
+  minHeight: '4.8rem',
+}));
+
 const CheckBoxWrapper = styled.div(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -33,7 +37,7 @@ const AgreeTerm = ({ control, errors, setPrivacyPolicyOpen }) => {
   }, [setPrivacyPolicyOpen]);
 
   return (
-    <>
+    <Container>
       <CheckBoxWrapper>
         <Wrapper>
           <Controller
@@ -59,7 +63,7 @@ const AgreeTerm = ({ control, errors, setPrivacyPolicyOpen }) => {
       </CheckBoxWrapper>
 
       <FormHelperText error>{errors.agreeToTerm ? errors.agreeToTerm.message : ''}</FormHelperText>
-    </>
+    </Container>
   );
 };
 

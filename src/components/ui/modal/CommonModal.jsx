@@ -106,20 +106,6 @@ const CommonModal = ({
     return () => document.removeEventListener('keyup', escKeyModalClose);
   }, [setOpenModal]);
 
-  useEffect(() => {
-    if (openModal) {
-      document.body.style.cssText = `
-        overflow-y: hidden;
-        max-height: 100vh;
-        width: 100%;
-      `;
-    }
-
-    return () => {
-      document.body.style.cssText = '';
-    };
-  }, [openModal]);
-
   return (
     <Modal
       open={openModal}

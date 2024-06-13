@@ -118,6 +118,11 @@ export const PhoneNumberRequiredText = () => {
   return <FormattedMessage id="lang-phone-number-required-text" />;
 };
 
+export const PhoneNumberInvalidText = () => {
+  // Phone Number Format is not valid
+  return <FormattedMessage id="lang-phone-number-invalid-text" />;
+};
+
 export const CategoryRequiredText = () => {
   // Please enter Category
   return <FormattedMessage id="lang-category-required-text" />;
@@ -154,7 +159,7 @@ export const ContentRequiredText = () => {
 };
 
 export const PrivacyPolicyRequiredText = () => {
-  // Please enter your Privacy Policy
+  // Please check Privacy Policy
   return <FormattedMessage id="lang-privacy-policy-required-text" />;
 };
 

@@ -7,11 +7,13 @@ import {
   FirstNameRequiredText,
   LastNameRequiredText,
   OptionRequiredText,
+  PhoneNumberInvalidText,
   PhoneNumberRequiredText,
   PrivacyPolicyRequiredText,
   TimeRequiredText,
   TitleRequiredText,
 } from '@/lib/react-intl/TranslatedTexts';
+import { isValidPhoneNumber } from 'react-phone-number-input';
 
 export const zodVoc = z.object({
   first_name: z.string().min(1, { message: <FirstNameRequiredText /> }),
@@ -20,7 +22,17 @@ export const zodVoc = z.object({
     .string()
     .min(1, { message: <EmailRequiredText /> })
     .email({ message: <EmailInvalidText /> }),
-  phone: z.string().min(1, { message: <PhoneNumberRequiredText /> }),
+  phone: z
+    .string()
+    .min(1, { message: <PhoneNumberRequiredText /> })
+    .refine(
+      (value) => {
+        return isValidPhoneNumber(value);
+      },
+      {
+        message: <PhoneNumberInvalidText />,
+      }
+    ),
   category_key: z.string().min(1, { message: <CategoryRequiredText /> }),
   time_key: z.string().min(1, { message: <TimeRequiredText /> }),
   route_key: z.string().min(1, { message: <OptionRequiredText /> }),

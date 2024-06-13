@@ -5,7 +5,7 @@ import { LOCAL_STORAGE_LANGUAGE } from '@/constants/storageKey';
 import { SUPPORTED_LANGUAGE_LIST } from '@/constants/languages';
 import RootLayout from '@/_root/RootLayout';
 import { Home } from '@/_root/pages/home';
-import { NotFound } from '@/_root/pages';
+import { NotFound } from '@/screen';
 import QrCode from '@/_root/pages/home/QrCode';
 
 const Routers = () => {
@@ -25,7 +25,6 @@ const Routers = () => {
 
   return (
     <Routes>
-      {/* NOTE: 로그인없이 접근할 수 있는 페이지 */}
       <Route element={<RootLayout />}>
         <Route path="/" element={<Navigate to={baseUrl} replace />} />
 

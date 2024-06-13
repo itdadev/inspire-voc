@@ -28,6 +28,7 @@
   "lang-first-name-required-text" : "请输入名字",
   "lang-last-name-required-text" : "请输入姓氏",
   "lang-phone-number-required-text" : "请输入电话号码",
+  "lang-phone-number-invalid-text": "请确认电话号码的格式。",
   "lang-category-required-text" : "请输入类别",
   "lang-time-required-text" : "请输入时间",
   "lang-option-required-text" : "请输入选项",

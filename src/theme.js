@@ -137,6 +137,7 @@ export const AppTheme = {
     MuiSelect: {
       styleOverrides: {
         root: () => ({
+          minHeight: '5.6rem',
           fontSize: '1.4rem !important',
         }),
       },

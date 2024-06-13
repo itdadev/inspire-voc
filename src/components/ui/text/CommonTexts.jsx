@@ -24,15 +24,6 @@ export const CommonTitleTwo = styled.h2(({ theme, lowercase }) => ({
   },
 }));
 
-export const CommonTitleThree = styled.h2(({ theme }) => ({
-  fontWeight: theme.fontWeight.bold,
-  fontSize: '2rem',
-
-  [mq('desktop')]: {
-    fontSize: '3.2rem',
-  },
-}));
-
 export const CommonDescOne = styled.h2(({ theme }) => ({
   fontWeight: theme.fontWeight.regular,
   fontSize: '1.6rem',
@@ -45,15 +36,5 @@ export const CommonDescOne = styled.h2(({ theme }) => ({
 
   [mq('desktop')]: {
     fontSize: '2rem',
-  },
-}));
-
-export const CommonDescTwo = styled.div(({ theme }) => ({
-  fontWeight: theme.fontWeight.regular,
-  fontSize: '1.6rem',
-  lineHeight: 1.5,
-
-  [mq('desktop')]: {
-    fontSize: '1.8rem',
   },
 }));

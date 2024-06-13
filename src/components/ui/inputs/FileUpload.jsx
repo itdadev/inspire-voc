@@ -81,7 +81,7 @@ const FileUpload = ({ fileList, setFileList }) => {
       const formData = new FormData();
 
       Array.from(e.target.files).map((file) => {
-        formData.append('files', file);
+        return formData.append('files', file);
       });
 
       const { status, data } = await axios.post(UPLOAD_FILE_LIST_API_URL, formData);

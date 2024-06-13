@@ -28,6 +28,7 @@
   "lang-first-name-required-text" : "이름을 입력해주세요.",
   "lang-last-name-required-text" : "성을 입력해주세요.",
   "lang-phone-number-required-text" : "전화번호를 입력해주세요.",
+  "lang-phone-number-invalid-text": "전화번호 형식을 확인해주세요.",
   "lang-category-required-text" : "카테고리를 입력해주세요.",
   "lang-time-required-text" : "시간을 입력해주세요.",
   "lang-option-required-text" : "옵션을 입력해주세요.",

@@ -32,7 +32,7 @@ function App() {
     if (locale === 'zh_hant') {
       return 'zh-hant';
     }
-  }, []);
+  }, [locale]);
 
   const messages = {
     en: enUSMsg,

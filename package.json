@@ -32,12 +32,12 @@
   },
   "scripts": {
     "start": "env-cmd -f .env.dev craco start",
-    "build": "env-cmd -f .env.prod craco build",
+    "build": "env-cmd -f .env craco build",
     "test": "craco test",
     "eject": "craco eject",
-    "start:prod": "env-cmd -f .env.prod craco start",
+    "start:prod": "env-cmd -f .env craco start",
     "start:dev": "env-cmd -f .env.dev craco start",
-    "build:prod": "env-cmd -f .env.prod craco build",
+    "build:prod": "env-cmd -f .env craco build",
     "build:dev": "env-cmd -f .env.dev craco build"
   },
   "eslintConfig": {

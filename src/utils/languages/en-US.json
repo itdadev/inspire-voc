@@ -28,6 +28,7 @@
   "lang-first-name-required-text" : "Please enter your First Name",
   "lang-last-name-required-text" : "Please enter your Last Name",
   "lang-phone-number-required-text" : "Please enter Phone Number",
+  "lang-phone-number-invalid-text": "Phone Number format is not valid",
   "lang-category-required-text" : "Please enter Category",
   "lang-time-required-text" : "Please enter Time",
   "lang-option-required-text" : "Please enter Option",

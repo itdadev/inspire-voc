@@ -28,6 +28,7 @@
   "lang-first-name-required-text" : "請輸入名字",
   "lang-last-name-required-text" : "請輸入姓氏",
   "lang-phone-number-required-text" : "請輸入電話號碼",
+  "lang-phone-number-invalid-text": "請確認電話號碼的格式。",
   "lang-category-required-text" : "請輸入類別",
   "lang-time-required-text" : "請輸入時間",
   "lang-option-required-text" : "請輸入選項",

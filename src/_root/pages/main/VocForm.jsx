@@ -30,6 +30,7 @@ import {
 } from '@/lib/react-intl/TranslatedTexts';
 import { useIntl } from 'react-intl';
 import { SubmitSuccessAlert } from '@/components/ui/alert';
+import { RequiredMark } from '@/components/ui/inputs/TextInput';
 
 const TextInputWrapper = styled.div(() => ({
   minHeight: '8rem',
@@ -190,6 +191,7 @@ const VocForm = () => {
           label={<FirstNameText />}
           placeholder="lang-first-name-placeholder-text"
           maxLength={15}
+          required
         />
 
         <TextInput
@@ -198,6 +200,7 @@ const VocForm = () => {
           label={<LastNameText />}
           placeholder="lang-last-name-placeholder-text"
           maxLength={15}
+          required
         />
       </TextWrapper>
 
@@ -214,7 +217,12 @@ const VocForm = () => {
                 })}
                 inputComponent={PhoneNumberInput}
                 name="country_code"
-                label={<PhoneNumberText />}
+                label={
+                  <>
+                    <PhoneNumberText />
+                    {<RequiredMark>*</RequiredMark>}
+                  </>
+                }
                 error={!!errors['phone']}
                 helperText={errors['phone']?.message}
                 defaultCountry={'KR'}
@@ -259,6 +267,9 @@ const VocForm = () => {
         name="email"
         label={<EmailText />}
         placeholder="lang-email-placeholder-text"
+        maxLength={50}
+        inputmode="email"
+        required
       />
 
       <TextInput
@@ -266,6 +277,8 @@ const VocForm = () => {
         name="title"
         label={<TitleText />}
         placeholder="lang-title-placeholder-text"
+        maxLength={100}
+        required
       />
 
       <TextInput
@@ -275,6 +288,8 @@ const VocForm = () => {
         rows={6}
         multiline
         placeholder="lang-content-placeholder-text"
+        maxLength={500}
+        required
       />
 
       <FileUpload fileList={fileList} setFileList={setFileList} />

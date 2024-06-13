@@ -1,12 +1,17 @@
 import React, { memo } from 'react';
 import { Controller } from 'react-hook-form';
-import { InputAdornment, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import styled from '@emotion/styled';
 import { useIntl } from 'react-intl';
 
-const TextInputWrapper = styled.div(() => ({
-  minHeight: '8rem',
+const TextInputWrapper = styled.div(({ textarea }) => ({
+  minHeight: textarea ? '20rem' : '8rem',
   width: '100%',
+}));
+
+export const RequiredMark = styled.span(({ theme }) => ({
+  marginLeft: '0.2rem',
+  color: theme.color.red01,
 }));
 const TextInput = ({
   type = 'text',
@@ -15,18 +20,17 @@ const TextInput = ({
   label,
   placeholder,
   onClick,
-  readOnly,
-  endAdornment,
   customValue,
   maxLength,
   rows,
   multiline,
   required,
+  inputmode,
 }) => {
   const intl = useIntl();
 
   return (
-    <TextInputWrapper>
+    <TextInputWrapper textarea={multiline}>
       <Controller
         control={control}
         name={name}
@@ -37,7 +41,12 @@ const TextInput = ({
               autoComplete={type === 'password' ? 'new-password' : 'off'}
               margin="dense"
               type={type}
-              label={label}
+              label={
+                <>
+                  {label}
+                  {required && <RequiredMark>*</RequiredMark>}
+                </>
+              }
               rows={rows}
               onChange={onChange}
               onClick={onClick}
@@ -51,14 +60,7 @@ const TextInput = ({
               placeholder={intl.formatMessage({
                 id: placeholder,
               })}
-              inputProps={{ maxLength: maxLength }}
-              required={required}
-              InputProps={{
-                readOnly: readOnly,
-                endAdornment: endAdornment && (
-                  <InputAdornment position="end">{endAdornment}</InputAdornment>
-                ),
-              }}
+              inputProps={{ maxLength: maxLength, inputMode: inputmode }}
             />
           );
         }}

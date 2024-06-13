@@ -28,6 +28,7 @@
   "lang-first-name-required-text" : "名前を入力してください",
   "lang-last-name-required-text" : "苗字を入力してください",
   "lang-phone-number-required-text" : "電話番号を入力してください",
+  "lang-phone-number-invalid-text": "電話番号の形式を確認してください。",
   "lang-category-required-text" : "カテゴリーを入力してください",
   "lang-time-required-text" : "時間を入力してください",
   "lang-option-required-text" : "オプションを入力してください",
