@@ -32,6 +32,8 @@ function App() {
     if (locale === 'zh_hant') {
       return 'zh-hant';
     }
+
+    return locale;
   }, [locale]);
 
   const messages = {

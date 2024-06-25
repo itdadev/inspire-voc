@@ -90,20 +90,23 @@ const VocForm = () => {
       email: '',
       phone: '',
       country_code: '',
-      category: '',
-      route_key: '',
-      time_key: '',
-      category_key: '',
+      route: '5',
+      time: '',
+      category: '1',
       title: '',
       content: '',
       agreeToTerm: false,
     },
   });
 
+  useEffect(() => {
+    setValue('category', '1');
+  }, [setValue]);
+
   // NOTE: fetching select Lists
   const watchData = watch();
 
-  const { data: timeList } = useGetTimeList(watchData.route_key);
+  const { data: timeList } = useGetTimeList(watchData.route);
   const { data: categoryList } = useGetCategoryList();
   const { data: routeList } = useGetRouteList();
 
@@ -115,31 +118,33 @@ const VocForm = () => {
     const lastIndex = getTimeIndex(timeList, option2);
 
     if (timeList?.[lastIndex]) {
-      setValue('time_key', JSON.stringify(timeList[lastIndex].key));
+      setValue('time', timeList[lastIndex].code_value);
     } else {
-      setValue('time_key', '');
+      setValue('time', '');
     }
   }, [timeList, isSuccess, setValue, option2]);
 
   useEffect(() => {
     // NOTE: category url 기준으로 미리 선택
-    const selectedCategory = categoryList?.find((el) => el.id.toLowerCase() === categoryType);
+    const selectedCategory = categoryList?.find(
+      (el) => el.code_value.toLowerCase() === categoryType
+    );
 
     if (selectedCategory) {
-      setValue('category_key', JSON.stringify(selectedCategory.key));
+      setValue('category', selectedCategory.code_value);
     } else {
-      setValue('time_key', '');
+      setValue('time', '');
     }
   }, [categoryType, categoryList, isSuccess, setValue]);
 
   useEffect(() => {
     // NOTE: route url 기준으로 미리 선택
-    const selectedRoute = routeList?.find((el) => el.id.toLowerCase() === option1);
+    const selectedRoute = routeList?.find((el) => el.code_id.toLowerCase() === option1);
 
-    if (selectedRoute?.key) {
-      setValue('route_key', JSON.stringify(selectedRoute?.key));
+    if (selectedRoute?.code_value) {
+      setValue('route', selectedRoute?.code_value);
     } else {
-      setValue('route_key', JSON.stringify(routeList?.[0].key));
+      setValue('route', routeList?.[0].code_value);
     }
   }, [option1, routeList, isSuccess, setValue]);
 
@@ -239,7 +244,7 @@ const VocForm = () => {
           disabled
           control={control}
           errors={errors}
-          name="category_key"
+          name="category"
           arr={categoryList}
           label={<CategoryText />}
         />
@@ -248,7 +253,7 @@ const VocForm = () => {
           disabled={timeList === undefined}
           control={control}
           errors={errors}
-          name="time_key"
+          name="time"
           arr={timeList}
           label={<TimeText />}
         />
@@ -257,7 +262,7 @@ const VocForm = () => {
       <SelectInput
         control={control}
         errors={errors}
-        name="route_key"
+        name="route"
         arr={routeList}
         label={<OptionText />}
       />

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 
-import { CATEGORY_LIST_API_URL, ROUTE_LIST_API_URL, TIME_LIST_API_URL } from '@/constants/apiUrls';
+import { CODE_API_URL } from '@/constants/apiUrls';
 import { LOCAL_STORAGE_LANGUAGE } from '@/constants/storageKey';
 import { CATEGORY_LIST_KEY, ROUTE_LIST_KEY, TIME_LIST_KEY } from '@/constants/queryKeys';
 
@@ -11,7 +11,7 @@ export function useGetCategoryList() {
   const language = localStorage.getItem(LOCAL_STORAGE_LANGUAGE);
 
   const getCategoryList = useCallback(async () => {
-    return await axios.get(`${CATEGORY_LIST_API_URL}/1?lang=${language}`);
+    return await axios.get(`${CODE_API_URL}/4?lang=${language}`);
   }, [language]);
 
   return useSuspenseQuery({
@@ -25,7 +25,7 @@ export function useGetRouteList() {
   const language = localStorage.getItem(LOCAL_STORAGE_LANGUAGE);
 
   const getRouteCategoryList = useCallback(async () => {
-    return await axios.get(`${ROUTE_LIST_API_URL}/1?lang=${language}`);
+    return await axios.get(`${CODE_API_URL}/5?lang=${language}`);
   }, [language]);
 
   return useQuery({
@@ -39,7 +39,9 @@ export function useGetTimeList(routeKey) {
   const language = localStorage.getItem(LOCAL_STORAGE_LANGUAGE);
 
   const getTimeCategoryList = useCallback(async () => {
-    return await axios.get(`${TIME_LIST_API_URL}/${routeKey}?lang=${language}`);
+    return await axios.get(
+      `${CODE_API_URL}/${Number(routeKey.replaceAll('"', ''))}?lang=${language}`
+    );
   }, [language, routeKey]);
 
   return useQuery({

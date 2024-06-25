@@ -17,7 +17,7 @@ const SubmitSuccessAlert = ({ successSnackBar, setSuccessSnackBar }) => {
   return (
     <Snackbar
       open={successSnackBar}
-      autoHideDuration={6000}
+      autoHideDuration={5000}
       onClose={handleClose}
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
     >

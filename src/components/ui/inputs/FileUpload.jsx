@@ -7,10 +7,12 @@ import { Alert } from '@mui/material';
 
 import { DOWNLOAD_FILE_LIST_API_URL, UPLOAD_FILE_LIST_API_URL } from '@/constants/apiUrls';
 import {
+  UploadFilesInvalidText,
   UploadFilesLimitRequiredText,
-  UploadFilesPlaceholderText,
   UploadFilesText,
 } from '@/lib/react-intl/TranslatedTexts';
+import { LoadingSpinner } from '@/components/loading';
+import { checkFileExtension } from '@/utils/Functions';
 
 const Container = styled.div(() => ({
   margin: '2rem 0',
@@ -64,32 +66,64 @@ const StyledAlert = styled(Alert)(() => ({
   margin: '1rem 0',
 }));
 
+const Description = styled.div(() => ({
+  marginTop: '1rem',
+  color: '#979797',
+  fontSize: '1.4rem',
+  lineHeight: 1.2,
+}));
+
 const FileUpload = ({ fileList, setFileList }) => {
   const [maxFileLengthAlert, setMaxFileLengthAlert] = useState(false);
+  const [fileInvalidAlert, setFileInvalidAlert] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const uploadFileList = useCallback(
     async (e) => {
       if (e.target.files.length === 0) {
+        // NOTE: 파일 선택 안하고 팝업창 닫을시
         return;
       }
 
       if (fileList?.length + e.target.files.length > 5) {
+        // NOTE: 최대 업로드 파일 개수 초과시
         setMaxFileLengthAlert(true);
         return;
       }
 
-      const formData = new FormData();
-
-      Array.from(e.target.files).map((file) => {
-        return formData.append('files', file);
+      let allFilesValid = true;
+      Array.from(e.target.files).forEach((file) => {
+        // NOTE: 파일 확장자 유효성 체크
+        if (!checkFileExtension(file)) {
+          setFileInvalidAlert(true);
+          allFilesValid = false;
+        }
       });
 
-      const { status, data } = await axios.post(UPLOAD_FILE_LIST_API_URL, formData);
+      if (!allFilesValid) {
+        return;
+      }
 
-      if (status === 200) {
-        const wholeArr = fileList.concat(data);
+      const formData = new FormData();
+      Array.from(e.target.files).forEach((file) => {
+        formData.append('files', file);
+      });
 
-        setFileList(wholeArr);
+      setLoading(true);
+
+      try {
+        const { status, data } = await axios.post(UPLOAD_FILE_LIST_API_URL, formData);
+
+        if (status === 200) {
+          const wholeArr = fileList.concat(data);
+
+          setFileList(wholeArr);
+          setFileInvalidAlert(false);
+        }
+      } catch (error) {
+        console.error('File upload failed', error);
+      } finally {
+        setLoading(false);
       }
     },
     [setFileList, fileList]
@@ -105,7 +139,7 @@ const FileUpload = ({ fileList, setFileList }) => {
   );
 
   useEffect(() => {
-    if (fileList.length > 5) {
+    if (fileList?.length > 5) {
       setMaxFileLengthAlert(true);
     } else {
       setMaxFileLengthAlert(false);
@@ -114,16 +148,41 @@ const FileUpload = ({ fileList, setFileList }) => {
 
   return (
     <Container>
-      <Label htmlFor="images">
-        <img src={image.fileUploadIcon.default} alt="" width={30} />
-        <UploadFilesText /> (<UploadFilesPlaceholderText />)
-      </Label>
+      {loading ? (
+        <LoadingSpinner isFetching width="3.2rem" point />
+      ) : (
+        <Label htmlFor="images">
+          <img src={image.fileUploadIcon.default} alt="" width={30} />
 
-      <input type="file" id="images" onChange={uploadFileList} multiple="multiple" />
+          <div>
+            <UploadFilesText />
+          </div>
+        </Label>
+      )}
+
+      <Description>
+        <p>* File format : pdf / doc / hwp / jpg / png</p>
+
+        <p>* Max. attachment size : 50MB</p>
+      </Description>
+
+      <input
+        type="file"
+        id="images"
+        onChange={uploadFileList}
+        multiple="multiple"
+        accept=".doc, .docx, .pdf, .png, .jpg, .jpeg, .hwp"
+      />
 
       {maxFileLengthAlert && (
         <StyledAlert severity="warning">
           <UploadFilesLimitRequiredText />
+        </StyledAlert>
+      )}
+
+      {fileInvalidAlert && (
+        <StyledAlert severity="warning">
+          <UploadFilesInvalidText />
         </StyledAlert>
       )}
 

@@ -168,6 +168,11 @@ export const UploadFilesLimitRequiredText = () => {
   return <FormattedMessage id="lang-upload-files-limit-text" />;
 };
 
+export const UploadFilesInvalidText = () => {
+  // You can upload up to five files.
+  return <FormattedMessage id="lang-upload-files-invalid-text" />;
+};
+
 // NOTE: Not Found Descriptions
 
 export const NotFoundDesc1Text = () => {

@@ -33,9 +33,9 @@ export const zodVoc = z.object({
         message: <PhoneNumberInvalidText />,
       }
     ),
-  category_key: z.string().min(1, { message: <CategoryRequiredText /> }),
-  time_key: z.string().min(1, { message: <TimeRequiredText /> }),
-  route_key: z.string().min(1, { message: <OptionRequiredText /> }),
+  category: z.string().min(1, { message: <CategoryRequiredText /> }),
+  time: z.string().min(1, { message: <TimeRequiredText /> }),
+  route: z.string().min(1, { message: <OptionRequiredText /> }),
   title: z.string().min(1, { message: <TitleRequiredText /> }),
   content: z.string().min(1, { message: <ContentRequiredText /> }),
   agreeToTerm: z.boolean().refine((value) => value === true, {

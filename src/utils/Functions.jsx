@@ -181,3 +181,11 @@ export function changeSecondaryFontFamily() {
       return "'Arsenal', sans-serif";
   }
 }
+
+export function checkFileExtension(file) {
+  // const correctForm = /(.*?)\.(jpg|jpeg|png|doc|docx|pdf|hwp)$/;
+  const correctForm = ['jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'hwp'];
+  const ext = file.name.split('.').pop().toLowerCase();
+
+  return correctForm.includes(ext);
+}
