@@ -1,14 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
+import dayjs from 'dayjs';
 import { zodResolver } from '@hookform/resolvers/zod';
 import styled from '@emotion/styled';
+import { useIntl } from 'react-intl';
 
 import en from 'react-phone-number-input/locale/en';
 import PhoneInput from 'react-phone-number-input';
 
 import { PrivacyPolicyModal } from '@/components/ui/modal';
 import { FileUpload, PhoneNumberInput, SelectInput, TextInput } from '@/components/ui/inputs';
+import { RequiredMark } from '@/components/ui/inputs/TextInput';
+import { GoogleRecaptcha } from '@/components/ui/item';
 import { PrimaryButton } from '@/components/ui/button';
 import { zodVoc } from '@/lib/react-hook-form/zodValidation';
 import { mq } from '@/lib/react-responsive/mediaQuery';
@@ -28,9 +32,6 @@ import {
   TimeText,
   TitleText,
 } from '@/lib/react-intl/TranslatedTexts';
-import { useIntl } from 'react-intl';
-import { SubmitSuccessAlert } from '@/components/ui/alert';
-import { RequiredMark } from '@/components/ui/inputs/TextInput';
 
 const TextInputWrapper = styled.div(() => ({
   minHeight: '8rem',
@@ -66,13 +67,14 @@ const ButtonWrapper = styled.div(() => ({
 
 const VocForm = () => {
   const intl = useIntl();
+  const navigate = useNavigate();
 
-  const { categoryType, option1, option2 } = useParams();
-
-  const [successSnackBar, setSuccessSnackBar] = useState(false);
+  const { categoryType, option1 } = useParams();
 
   const [fileList, setFileList] = useState([]);
   const [privacyPolicyOpen, setPrivacyPolicyOpen] = useState(false);
+
+  const now = dayjs().format('HH:mm');
 
   const {
     control,
@@ -115,14 +117,14 @@ const VocForm = () => {
 
   useEffect(() => {
     // NOTE: time url 기준으로 미리 선택
-    const lastIndex = getTimeIndex(timeList, option2);
+    const lastIndex = getTimeIndex(timeList, now);
 
     if (timeList?.[lastIndex]) {
       setValue('time', timeList[lastIndex].code_value);
     } else {
       setValue('time', '');
     }
-  }, [timeList, isSuccess, setValue, option2]);
+  }, [timeList, isSuccess, setValue, now]);
 
   useEffect(() => {
     // NOTE: category url 기준으로 미리 선택
@@ -166,11 +168,11 @@ const VocForm = () => {
       resetField('content', { keepError: false });
       resetField('agreeToTerm', { keepError: false });
 
-      setSuccessSnackBar(true);
+      navigate('/complete');
 
       setFileList([]);
     }
-  }, [isSuccess, setSuccessSnackBar, resetField]);
+  }, [isSuccess, resetField, navigate]);
 
   const submitVocForm = useCallback(
     (data) => {
@@ -183,11 +185,6 @@ const VocForm = () => {
   return (
     <CustomForm onSubmit={handleSubmit(submitVocForm)}>
       <PrivacyPolicyModal openModal={privacyPolicyOpen} setOpenModal={setPrivacyPolicyOpen} />
-
-      <SubmitSuccessAlert
-        successSnackBar={successSnackBar}
-        setSuccessSnackBar={setSuccessSnackBar}
-      />
 
       <TextWrapper>
         <TextInput
@@ -298,6 +295,8 @@ const VocForm = () => {
       />
 
       <FileUpload fileList={fileList} setFileList={setFileList} />
+
+      <GoogleRecaptcha />
 
       <AgreeTerm control={control} errors={errors} setPrivacyPolicyOpen={setPrivacyPolicyOpen} />
 

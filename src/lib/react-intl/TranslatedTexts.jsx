@@ -101,6 +101,11 @@ export const SuccessSumitMessage2Text = () => {
   return <FormattedMessage id="lang-success-submit-message-2" />;
 };
 
+export const VisitWebsiteText = () => {
+  // Visit Website
+  return <FormattedMessage id="lang-visit-website" />;
+};
+
 // NOTE: Error Message
 
 export const FirstNameRequiredText = () => {
@@ -164,13 +169,18 @@ export const PrivacyPolicyRequiredText = () => {
 };
 
 export const UploadFilesLimitRequiredText = () => {
-  // You can upload up to five files.
+  // You can upload up to one files.
   return <FormattedMessage id="lang-upload-files-limit-text" />;
 };
 
 export const UploadFilesInvalidText = () => {
-  // You can upload up to five files.
+  // Only jpg, jpeg, png
   return <FormattedMessage id="lang-upload-files-invalid-text" />;
+};
+
+export const UploadFilesSizeLimitText = () => {
+  // You can upload up to five files.
+  return <FormattedMessage id="lang-upload-files-size-limit-text" />;
 };
 
 // NOTE: Not Found Descriptions
@@ -193,4 +203,34 @@ export const NotFoundDesc3Text = () => {
 export const GotoVocText = () => {
   // Go to the Voice of Customer Page
   return <FormattedMessage id="lang-go-to-voc-text" />;
+};
+
+export const FileFormatText = () => {
+  // File format : jpg / jpeg / png
+  return <FormattedMessage id="lang-file-format" />;
+};
+
+export const AttatchmentSizeText = () => {
+  // Max. attachment size : 10MB
+  return <FormattedMessage id="lang-attachment-size" />;
+};
+
+export const ConnectWithUsText = () => {
+  //Connect With Us
+  return <FormattedMessage id="lang-connect-with-us" />;
+};
+
+export const HotelReservationText = () => {
+  // Hotel Reservation
+  return <FormattedMessage id="lang-hotel-reservation" />;
+};
+
+export const PhoneText = () => {
+  // Hotel Reservation
+  return <FormattedMessage id="lang-phone" />;
+};
+
+export const FaxText = () => {
+  // Hotel Reservation
+  return <FormattedMessage id="lang-fax" />;
 };

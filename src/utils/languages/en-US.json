@@ -13,6 +13,8 @@
   "lang-title-text" : "Title",
   "lang-content-text" : "Content",
   "lang-upload-files-text" : "Upload Files",
+  "lang-file-format" : "* File format : jpg / jpeg / png",
+  "lang-attachment-size" : "* Max. attachment size : 10MB",
   "lang-agree-privacy-policy-text" : "I agree to Privacy Policy",
   "lang-privacy-policy-text" : "Privacy Policy",
   "lang-submit-text" : "Submit",
@@ -37,7 +39,9 @@
   "lang-title-required-text" : "Title is required",
   "lang-content-required-text" : "Content is required",
   "lang-privacy-policy-required-text" : "Please agree to Privacy Policy",
-  "lang-upload-files-limit-text" : "You can upload up to five files",
+  "lang-upload-files-limit-text" : "You can upload only one file",
+  "lang-upload-files-invalid-text" : "Only files in jpg, jpeg or png format can be uploaded.",
+  "lang-upload-files-size-limit-text" : "The max file size is 10MB",
 
   "lang-success-submit-message-1" : "Your Form has submitted successfully!",
   "lang-success-submit-message-2" : "Thank you for participating in the survey.",
@@ -45,5 +49,10 @@
   "lang-not-found-desc-1" : "We apologize for any inconvenience caused \n while using the site.",
   "lang-not-found-desc-2" : "The page you requested has either been deleted, moved, or the address is incorrect.",
   "lang-not-found-desc-3" : "Please navigate to a different page or check the address again.",
-  "lang-go-to-voc-text" : "Go to the Voice of Customer Page"
+  "lang-go-to-voc-text" : "Go to the Voice of Customer Page",
+  "lang-visit-website" : "Visit Website",
+  "lang-connect-with-us" : "Connect with Us",
+  "lang-hotel-reservation" : "Hotel Reservation",
+  "lang-phone" : "Phone",
+  "lang-fax" : "Fax"
 }

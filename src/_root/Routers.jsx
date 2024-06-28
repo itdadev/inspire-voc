@@ -5,7 +5,7 @@ import { LOCAL_STORAGE_LANGUAGE } from '@/constants/storageKey';
 import { SUPPORTED_LANGUAGE_LIST } from '@/constants/languages';
 import RootLayout from '@/_root/RootLayout';
 import { Home } from '@/_root/pages/home';
-import { NotFound } from '@/screen';
+import { FormCompleteScreen, NotFound } from '@/screen';
 import QrCode from '@/_root/pages/home/QrCode';
 
 const Routers = () => {
@@ -34,8 +34,13 @@ const Routers = () => {
         })}
 
         {renderMultiRoutes({
-          path: '/voc/:categoryType/:option1/:option2',
+          path: '/voc/:categoryType/:option1',
           element: <Home />,
+        })}
+
+        {renderMultiRoutes({
+          path: '/complete',
+          element: <FormCompleteScreen />,
         })}
       </Route>
 

@@ -1,7 +1,8 @@
-import { css, Global } from '@emotion/react';
 // phone input styling
 import 'react-phone-number-input/style.css';
 import Theme from '@/theme';
+
+import { css, Global } from '@emotion/react';
 
 const style = css`
   //  Nanum Sqaure

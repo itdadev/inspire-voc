@@ -116,12 +116,12 @@ export function findLastFalseIndex(arr) {
   return -1;
 }
 
-export function getTimeIndex(arr, option2) {
+export function getTimeIndex(arr, currentTime) {
   const today = dayjs();
 
   const formattedToday = today.format('YYYY-MM-DD');
 
-  const now = dayjs(`${formattedToday} ${option2}:00`);
+  const now = dayjs(`${formattedToday} ${currentTime}:00`);
 
   const startTimeArr = arr?.map((time) => {
     const startTime = time.name.split(' ~ ')[0];
@@ -183,8 +183,7 @@ export function changeSecondaryFontFamily() {
 }
 
 export function checkFileExtension(file) {
-  // const correctForm = /(.*?)\.(jpg|jpeg|png|doc|docx|pdf|hwp)$/;
-  const correctForm = ['jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'hwp'];
+  const correctForm = ['jpg', 'jpeg', 'png'];
   const ext = file.name.split('.').pop().toLowerCase();
 
   return correctForm.includes(ext);

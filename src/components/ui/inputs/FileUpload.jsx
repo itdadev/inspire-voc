@@ -7,26 +7,35 @@ import { Alert } from '@mui/material';
 
 import { DOWNLOAD_FILE_LIST_API_URL, UPLOAD_FILE_LIST_API_URL } from '@/constants/apiUrls';
 import {
+  AttatchmentSizeText,
+  FileFormatText,
   UploadFilesInvalidText,
   UploadFilesLimitRequiredText,
+  UploadFilesSizeLimitText,
   UploadFilesText,
 } from '@/lib/react-intl/TranslatedTexts';
 import { LoadingSpinner } from '@/components/loading';
 import { checkFileExtension } from '@/utils/Functions';
+import { MAX_FILE_UPLOAD_LENGTH, MAX_FILE_UPLOAD_SIZE } from '@/constants/Constants';
 
 const Container = styled.div(() => ({
-  margin: '2rem 0',
+  margin: '0 0 2rem',
 
   "input[type='file']": {
     display: 'none',
   },
 }));
 
-const Label = styled.label(() => ({
+const Label = styled.label(({ theme }) => ({
   display: 'inline-flex',
   alignItems: 'center',
+  background: theme.color.point04,
   gap: '0 1rem',
   cursor: 'pointer',
+  padding: '1rem',
+  borderRadius: '1rem',
+  color: theme.color.white,
+  fontSize: '1.4rem',
 }));
 
 const List = styled.div(() => ({
@@ -74,6 +83,7 @@ const Description = styled.div(() => ({
 }));
 
 const FileUpload = ({ fileList, setFileList }) => {
+  const [maxFileSizeAlert, setMaxFileSizeAlert] = useState(false);
   const [maxFileLengthAlert, setMaxFileLengthAlert] = useState(false);
   const [fileInvalidAlert, setFileInvalidAlert] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -85,14 +95,20 @@ const FileUpload = ({ fileList, setFileList }) => {
         return;
       }
 
-      if (fileList?.length + e.target.files.length > 5) {
+      if (fileList?.length + e.target.files.length > MAX_FILE_UPLOAD_LENGTH) {
         // NOTE: 최대 업로드 파일 개수 초과시
         setMaxFileLengthAlert(true);
         return;
       }
 
       let allFilesValid = true;
+      let allFilesSmall = true;
       Array.from(e.target.files).forEach((file) => {
+        if (file.size > MAX_FILE_UPLOAD_SIZE) {
+          setMaxFileSizeAlert(true);
+          allFilesSmall = false;
+        }
+
         // NOTE: 파일 확장자 유효성 체크
         if (!checkFileExtension(file)) {
           setFileInvalidAlert(true);
@@ -100,11 +116,12 @@ const FileUpload = ({ fileList, setFileList }) => {
         }
       });
 
-      if (!allFilesValid) {
+      if (!allFilesValid || !allFilesSmall) {
         return;
       }
 
       const formData = new FormData();
+
       Array.from(e.target.files).forEach((file) => {
         formData.append('files', file);
       });
@@ -119,6 +136,7 @@ const FileUpload = ({ fileList, setFileList }) => {
 
           setFileList(wholeArr);
           setFileInvalidAlert(false);
+          setMaxFileSizeAlert(false);
         }
       } catch (error) {
         console.error('File upload failed', error);
@@ -152,7 +170,7 @@ const FileUpload = ({ fileList, setFileList }) => {
         <LoadingSpinner isFetching width="3.2rem" point />
       ) : (
         <Label htmlFor="images">
-          <img src={image.fileUploadIcon.default} alt="" width={30} />
+          <img src={image.fileUploadIcon.default} alt="" width={20} />
 
           <div>
             <UploadFilesText />
@@ -161,18 +179,16 @@ const FileUpload = ({ fileList, setFileList }) => {
       )}
 
       <Description>
-        <p>* File format : pdf / doc / hwp / jpg / png</p>
+        <p>
+          <FileFormatText />
+        </p>
 
-        <p>* Max. attachment size : 50MB</p>
+        <p>
+          <AttatchmentSizeText />
+        </p>
       </Description>
 
-      <input
-        type="file"
-        id="images"
-        onChange={uploadFileList}
-        multiple="multiple"
-        accept=".doc, .docx, .pdf, .png, .jpg, .jpeg, .hwp"
-      />
+      <input type="file" id="images" onChange={uploadFileList} accept=".png, .jpg, .jpeg" />
 
       {maxFileLengthAlert && (
         <StyledAlert severity="warning">
@@ -183,6 +199,12 @@ const FileUpload = ({ fileList, setFileList }) => {
       {fileInvalidAlert && (
         <StyledAlert severity="warning">
           <UploadFilesInvalidText />
+        </StyledAlert>
+      )}
+
+      {maxFileSizeAlert && (
+        <StyledAlert severity="warning">
+          <UploadFilesSizeLimitText />
         </StyledAlert>
       )}
 

@@ -15,7 +15,7 @@ const QrCode = () => {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Button onClick={() => navigate('/voc/bus/ansan_jeongwang-dong/20:00')}>QR CODE</Button>
+      <Button onClick={() => navigate('/voc/bus/ansan_jeongwang-dong')}>QR CODE</Button>
     </div>
   );
 };

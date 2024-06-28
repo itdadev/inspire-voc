@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Main } from '@/_root/pages/main';
-import Banner from '../../../components/shared/banner/Banner';
 
 const Container = styled.div(() => ({
   minHeight: '100vh',
@@ -11,7 +10,7 @@ const Container = styled.div(() => ({
 const Home = () => {
   return (
     <Container>
-      <Banner />
+      {/*<Banner />*/}
 
       <Main />
     </Container>

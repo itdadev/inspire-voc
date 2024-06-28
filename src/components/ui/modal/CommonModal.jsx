@@ -50,14 +50,9 @@ export const TitleWrapper = styled.div(() => ({
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   marginBottom: '2rem',
-  maxWidth: '80%',
-
-  [mq('desktop')]: {
-    alignItems: 'flex-start',
-    marginBottom: '4rem',
-  },
+  width: '100%',
 }));
 
 export const CloseButton = styled.div(() => ({
@@ -83,6 +78,7 @@ const CommonModal = ({
   noPadding,
   noName,
   whiteClose,
+  width,
 }) => {
   const isDesktop = useMediaQuery({ minWidth: 1200 });
 
@@ -120,7 +116,7 @@ const CommonModal = ({
       aria-describedby={description}
     >
       <Fade in={openModal}>
-        <Container noPadding={noPadding}>
+        <Container noPadding={noPadding} width={width}>
           <CloseButton type="button">
             <img
               src={whiteClose ? image.modalCloseWhiteIcon.default : image.modalCloseIcon.default}

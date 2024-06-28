@@ -14,6 +14,8 @@ export const image = {
 
   // NOTE: images
   bannerImage: require('@/assets/images/banner-image.png'),
+  footerBackgroundMobile: require('@/assets/images/footer-background-mobile.png'),
+  footerBackground: require('@/assets/images/footer-background.png'),
 };
 
 // NOTE: 공통 컬러

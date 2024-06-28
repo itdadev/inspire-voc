@@ -14,6 +14,7 @@ import koMsg from '@/utils/languages/ko.json';
 import chHansMsg from '@/utils/languages/ch-hans.json';
 import chHantMsg from '@/utils/languages/ch-hant.json';
 import jaMsg from '@/utils/languages/ja.json';
+import { Footer } from '@/components/shared/footer';
 
 function App() {
   const customMuiTheme = createTheme(AppTheme);
@@ -54,6 +55,8 @@ function App() {
             <Suspense fallback={<LoadingScreen />}>
               <Routers />
             </Suspense>
+
+            <Footer />
           </div>
         </ThemeProvider>
       </IntlProvider>
