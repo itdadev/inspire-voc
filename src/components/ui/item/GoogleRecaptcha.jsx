@@ -6,11 +6,7 @@ const GoogleRecaptcha = () => {
     console.log('Captcha value:', value);
   }
 
-  return (
-    <div>
-      <ReCAPTCHA sitekey="6Ld6MQIqAAAAAD1aNTCmYQi9zwLFItP35CYWza6S" onChange={onChange} />
-    </div>
-  );
+  return <ReCAPTCHA sitekey="6Le90AIqAAAAAOG0wVRRbkIB5TgeOpV2X1uEtjAU" onChange={onChange} />;
 };
 
 export default GoogleRecaptcha;

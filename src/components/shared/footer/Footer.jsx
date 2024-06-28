@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import styled from '@emotion/styled';
 
 import { CommonContainer } from '@/components/ui/container';
-import { mq } from '@/lib/react-responsive/mediaQuery';
 import { FooterBottom, FooterTop } from '@/components/shared/footer/index';
+import { mq } from '@/lib/react-responsive/mediaQuery';
 import { useGetFooterInformation } from '@/hooks/GetReqeusts';
 
 const FooterContainer = styled.footer(({ theme }) => ({

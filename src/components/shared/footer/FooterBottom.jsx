@@ -79,8 +79,6 @@ const CopyRight = styled.div(() => ({
   },
 }));
 const FooterBottom = ({ footerSns, footerAddress }) => {
-  console.log(footerSns?.field_facebook_connection_logo);
-
   return (
     <Container>
       <CommonContainer>
@@ -104,7 +102,7 @@ const FooterBottom = ({ footerSns, footerAddress }) => {
                   <a href={footerSns?.field_facebook_connection} target="_blank" rel="noreferrer">
                     {footerSns?.field_facebook_connection_logo && (
                       <object
-                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}${footerSns?.field_facebook_connection_logo[0]?.src}`}
+                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}/${footerSns?.field_facebook_connection_logo[0]?.src}`}
                         aria-labelledby={footerSns.field_facebook_connection_logo[0]?.alt}
                       />
                     )}
@@ -118,7 +116,7 @@ const FooterBottom = ({ footerSns, footerAddress }) => {
                     {footerSns?.field_instagram_connection_logo && (
                       <object
                         type="image/svg+xml"
-                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}${footerSns?.field_instagram_connection_logo[0]?.src}`}
+                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}/${footerSns?.field_instagram_connection_logo[0]?.src}`}
                         aria-labelledby={footerSns.field_instagram_connection_logo[0]?.alt}
                       />
                     )}
@@ -132,7 +130,7 @@ const FooterBottom = ({ footerSns, footerAddress }) => {
                     {footerSns?.field_kakao_connection_logo && (
                       <object
                         type="image/svg+xml"
-                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}${footerSns?.field_kakao_connection_logo[0]?.src}`}
+                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}/${footerSns?.field_kakao_connection_logo[0]?.src}`}
                         aria-labelledby={footerSns.field_kakao_connection_logo[0]?.alt}
                       />
                     )}
@@ -146,7 +144,7 @@ const FooterBottom = ({ footerSns, footerAddress }) => {
                     {footerSns?.field_wechat_connection_logo && (
                       <object
                         type="image/svg+xml"
-                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}${footerSns?.field_wechat_connection_logo[0]?.src}`}
+                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}/${footerSns?.field_wechat_connection_logo[0]?.src}`}
                         aria-labelledby={footerSns.field_wechat_connection_logo[0]?.alt}
                       />
                     )}
@@ -160,7 +158,7 @@ const FooterBottom = ({ footerSns, footerAddress }) => {
                     {footerSns?.field_naver_connection_logo && (
                       <object
                         type="image/svg+xml"
-                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}${footerSns?.field_naver_connection_logo[0]?.src}`}
+                        data={`${process.env.REACT_APP_WEBSITE_DRUPAL_URL}/${footerSns?.field_naver_connection_logo[0]?.src}`}
                         aria-labelledby={footerSns.field_naver_connection_logo[0]?.alt}
                       />
                     )}
