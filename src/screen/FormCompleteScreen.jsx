@@ -5,8 +5,8 @@ import { PrimaryButton } from '@/components/ui/button';
 import { CommonDescOne, CommonTitleOne } from '@/components/ui/text/CommonTexts';
 import { LOCAL_STORAGE_LANGUAGE } from '@/constants/storageKey';
 import {
-  SuccessSumitMessage1Text,
-  SuccessSumitMessage2Text,
+  SuccessSubmitMessage1Text,
+  SuccessSubmitMessage2Text,
   VisitWebsiteText,
 } from '@/lib/react-intl/TranslatedTexts';
 
@@ -35,12 +35,12 @@ const FormCompleteScreen = () => {
   return (
     <Container>
       <CommonTitleOne>
-        <SuccessSumitMessage1Text />
+        <SuccessSubmitMessage1Text />
       </CommonTitleOne>
 
       <CommonDescOne>
         <p>
-          <SuccessSumitMessage2Text />
+          <SuccessSubmitMessage2Text />
         </p>
       </CommonDescOne>
 

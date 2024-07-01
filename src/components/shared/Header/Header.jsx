@@ -30,11 +30,11 @@ const Header = () => {
   const language = localStorage.getItem(LOCAL_STORAGE_LANGUAGE);
 
   const changedLanguage = useMemo(() => {
-    if (language === 'zh_hans') {
+    if (language === 'zh-hans') {
       return 'zh-hans';
     }
 
-    if (language === 'zh_hant') {
+    if (language === 'zh-hant') {
       return 'zh-hant';
     }
 

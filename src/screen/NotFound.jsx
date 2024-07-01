@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
-import dayjs from 'dayjs';
 
 import { CommonDescOne, CommonTitleOne } from '@/components/ui/text/CommonTexts';
 import { PrimaryButton } from '@/components/ui/button';
@@ -41,8 +40,6 @@ const ButtonWrapper = styled.div(() => ({
 }));
 
 const NotFound = () => {
-  const now = dayjs().format('HH:mm');
-
   return (
     <Container>
       <Banner />
@@ -64,7 +61,7 @@ const NotFound = () => {
       </Information>
 
       <ButtonWrapper>
-        <PrimaryButton linkTo={`/voc/bus/icn-t1/${now}`} thick>
+        <PrimaryButton linkTo={`/voc/bus/icn-t1`} thick>
           <GotoVocText />
         </PrimaryButton>
       </ButtonWrapper>

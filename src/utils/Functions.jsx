@@ -24,13 +24,13 @@ const browserLanguageSwitch = () => {
       return 'ko';
 
     case 'zh':
-      return 'zh_hans';
+      return 'zh-hans';
 
     case 'zh-CN':
-      return 'zh_hans';
+      return 'zh-hans';
 
     case 'zh-TW':
-      return 'zh_hant';
+      return 'zh-hant';
 
     case 'en':
       return 'en';
@@ -147,10 +147,10 @@ export function changePrimaryFontFamily() {
     case 'ja':
       return "'Noto Sans JP', sans-serif";
 
-    case 'zh_hant':
+    case 'zh-hant':
       return "'Noto Sans SC', sans-serif";
 
-    case 'zh_hans':
+    case 'zh-hans':
       return "'Noto Sans SC', sans-serif";
 
     default:
@@ -171,10 +171,10 @@ export function changeSecondaryFontFamily() {
     case 'ja':
       return "'Noto Sans JP', sans-serif";
 
-    case 'zh_hant':
+    case 'zh-hant':
       return "'Noto Sans SC', sans-serif";
 
-    case 'zh_hans':
+    case 'zh-hans':
       return "'Noto Sans SC', sans-serif";
 
     default:

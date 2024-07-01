@@ -39,14 +39,6 @@ const SelectInput = (props) => {
                 placeholder={props.placeholder}
                 MenuProps={{ disableScrollLock: true }}
               >
-                {props.name === 'time' && props.arr === undefined && (
-                  <MenuItem value="">Please select route first</MenuItem>
-                )}
-
-                {props.name === 'route' && props.arr === undefined && (
-                  <MenuItem value="">Please select category first</MenuItem>
-                )}
-
                 {props.arr?.map((el) => {
                   return (
                     <MenuItem key={el.code_value} value={el.code_value}>

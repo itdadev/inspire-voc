@@ -10,20 +10,25 @@ import { CommonTitleTwo } from '@/components/ui/text/CommonTexts';
 
 const Container = styled.div(({ noPadding, width }) => ({
   width: '100%',
-  padding: noPadding ? 0 : '1.6rem',
+  padding: noPadding ? 0 : '3.2rem 1.6rem',
   background: 'white',
   borderRadius: '1.5rem',
+  maxWidth: '90%',
+  margin: '0 auto',
+  overflowY: 'auto',
+  maxHeight: '80vh',
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
 
   [mq('desktop')]: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    overflowY: 'auto',
     maxHeight: '80vh',
     minWidth: '40rem',
-    maxWidth: '90%',
+    maxWidth: '80%',
     width: width ? width : 'fit-content',
+
+    overflowY: 'auto',
     padding: noPadding ? 0 : '3rem',
   },
 }));

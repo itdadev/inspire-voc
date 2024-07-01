@@ -23,7 +23,7 @@ const ContentsWrapper = styled.section(({ theme, disableTopBorder }) => ({
   fontSize: '1.4rem',
   lineHeight: '1.5em',
   position: 'relative',
-  margin: `${disableTopBorder ? '0' : '7.2rem 0'}`,
+  margin: `${disableTopBorder ? '0' : '3.6rem 0'}`,
 
   [mq('mobile')]: {
     fontSize: '1.4rem',
@@ -189,7 +189,7 @@ const PrivacyPolicyContentsContainer = styled.section(({ theme, disableTopBorder
   fontSize: '1.4rem',
   lineHeight: '1.5em',
   position: 'relative',
-  margin: `${disableTopBorder ? '0' : '7.2rem 0'}`,
+  margin: `${disableTopBorder ? '0' : '3.6rem 0'}`,
 
   [mq('mobile')]: {
     fontSize: '1.4rem',
@@ -354,25 +354,23 @@ const PrivacyPolicyModal = ({ openModal, setOpenModal }) => {
   const { data: privacyPolicy } = useGetPrivacyPolicy();
 
   return (
-    <div>
-      <CommonModal
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        fixCloseButton
-        modalName={<PrivacyPolicyText />}
-        width="100%"
-      >
-        <ModalWrapper>
-          <div style={{ width: '100%', textAlign: 'left' }}>
-            <ContentsWrapper disableTopBorder={true}>
-              <PrivacyPolicyContentsContainer>
-                <DangerouslyHtml value={privacyPolicy?.field_full_page_content} />
-              </PrivacyPolicyContentsContainer>
-            </ContentsWrapper>
-          </div>
-        </ModalWrapper>
-      </CommonModal>
-    </div>
+    <CommonModal
+      openModal={openModal}
+      setOpenModal={setOpenModal}
+      fixCloseButton
+      modalName={<PrivacyPolicyText />}
+      width="100%"
+    >
+      <ModalWrapper>
+        <div style={{ width: '100%', textAlign: 'left' }}>
+          <ContentsWrapper disableTopBorder={true}>
+            <PrivacyPolicyContentsContainer>
+              <DangerouslyHtml value={privacyPolicy?.field_full_page_content} />
+            </PrivacyPolicyContentsContainer>
+          </ContentsWrapper>
+        </div>
+      </ModalWrapper>
+    </CommonModal>
   );
 };
 

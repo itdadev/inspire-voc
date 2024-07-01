@@ -6,7 +6,6 @@ import { SUPPORTED_LANGUAGE_LIST } from '@/constants/languages';
 import RootLayout from '@/_root/RootLayout';
 import { Home } from '@/_root/pages/home';
 import { FormCompleteScreen, NotFound } from '@/screen';
-import QrCode from '@/_root/pages/home/QrCode';
 
 const Routers = () => {
   const lang = localStorage.getItem(LOCAL_STORAGE_LANGUAGE) || 'en';
@@ -27,11 +26,6 @@ const Routers = () => {
     <Routes>
       <Route element={<RootLayout />}>
         <Route path="/" element={<Navigate to={baseUrl} replace />} />
-
-        {renderMultiRoutes({
-          path: '/',
-          element: <QrCode />,
-        })}
 
         {renderMultiRoutes({
           path: '/voc/:categoryType/:option1',

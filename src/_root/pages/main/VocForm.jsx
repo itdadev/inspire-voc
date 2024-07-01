@@ -98,6 +98,7 @@ const VocForm = () => {
       title: '',
       content: '',
       agreeToTerm: false,
+      captcha: false,
     },
   });
 
@@ -296,9 +297,9 @@ const VocForm = () => {
 
       <FileUpload fileList={fileList} setFileList={setFileList} />
 
-      <GoogleRecaptcha />
-
       <AgreeTerm control={control} errors={errors} setPrivacyPolicyOpen={setPrivacyPolicyOpen} />
+
+      <GoogleRecaptcha setValue={setValue} errors={errors} />
 
       <ButtonWrapper>
         <PrimaryButton buttonType="submit" thick>

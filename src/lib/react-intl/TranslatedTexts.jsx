@@ -68,11 +68,6 @@ export const UploadFilesText = () => {
   return <FormattedMessage id="lang-upload-files-text" />;
 };
 
-export const AgreePrivacyPolicyText = () => {
-  // I agree to Privacy Policy
-  return <FormattedMessage id="lang-agree-privacy-policy-text" />;
-};
-
 export const PrivacyPolicyText = () => {
   // Privacy Policy
   return <FormattedMessage id="lang-privacy-policy-text" />;
@@ -91,12 +86,12 @@ export const UploadFilesPlaceholderText = () => {
 
 // NOTE: Success Submit messages
 
-export const SuccessSumitMessage1Text = () => {
+export const SuccessSubmitMessage1Text = () => {
   // Your Form has submitted successfully!
   return <FormattedMessage id="lang-success-submit-message-1" />;
 };
 
-export const SuccessSumitMessage2Text = () => {
+export const SuccessSubmitMessage2Text = () => {
   // Thank you for participating in the survey.
   return <FormattedMessage id="lang-success-submit-message-2" />;
 };
@@ -168,6 +163,11 @@ export const PrivacyPolicyRequiredText = () => {
   return <FormattedMessage id="lang-privacy-policy-required-text" />;
 };
 
+export const CaptchaRequiredText = () => {
+  // Please check Privacy Policy
+  return <FormattedMessage id="lang-captcha-required-text" />;
+};
+
 export const UploadFilesLimitRequiredText = () => {
   // You can upload up to one files.
   return <FormattedMessage id="lang-upload-files-limit-text" />;
@@ -210,7 +210,7 @@ export const FileFormatText = () => {
   return <FormattedMessage id="lang-file-format" />;
 };
 
-export const AttatchmentSizeText = () => {
+export const AttachmentSizeText = () => {
   // Max. attachment size : 10MB
   return <FormattedMessage id="lang-attachment-size" />;
 };

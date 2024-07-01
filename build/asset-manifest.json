@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b72a09d2.css",
-    "main.js": "/static/js/main.ee673634.js",
+    "main.js": "/static/js/main.446dab4d.js",
     "static/media/banner-image.png": "/static/media/banner-image.032a0c76dfd799331c1e.png",
     "static/media/inspire-logo.svg": "/static/media/inspire-logo.d842ed4955d1983e39a45ff7cb7d2e7a.svg",
     "static/media/logo-white-full.svg": "/static/media/logo-white-full.54b5da902874484d37048fbb29366caa.svg",
@@ -14,6 +14,6 @@
   },
   "entrypoints": [
     "static/css/main.b72a09d2.css",
-    "static/js/main.ee673634.js"
+    "static/js/main.446dab4d.js"
   ]
 }

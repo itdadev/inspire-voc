@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  CaptchaRequiredText,
   CategoryRequiredText,
   ContentRequiredText,
   EmailInvalidText,
@@ -40,5 +41,8 @@ export const zodVoc = z.object({
   content: z.string().min(1, { message: <ContentRequiredText /> }),
   agreeToTerm: z.boolean().refine((value) => value === true, {
     message: <PrivacyPolicyRequiredText />,
+  }),
+  captcha: z.boolean().refine((value) => value === true, {
+    message: <CaptchaRequiredText />,
   }),
 });

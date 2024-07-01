@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { FOOTER_LOGO_ZINDEX } from '@/constants/zIndex';
 import { Link } from 'react-router-dom';
 import { FaxText, HotelReservationText, PhoneText } from '@/lib/react-intl/TranslatedTexts';
+import { LOCAL_STORAGE_LANGUAGE } from '@/constants/storageKey';
 
 const Container = styled.div(() => ({
   display: 'flex',
@@ -160,6 +161,7 @@ const ContactItem = styled.li(() => ({
 
 const FooterTop = ({ footerAddress, footerMenu, footerContact }) => {
   const INSPIRE_HOMEPAGE_URL = 'https://www.inspirekorea.com';
+  const lang = localStorage.getItem(LOCAL_STORAGE_LANGUAGE) || 'en';
 
   return (
     <Container>
@@ -178,7 +180,7 @@ const FooterTop = ({ footerAddress, footerMenu, footerContact }) => {
         <section>
           {footerMenu?.length > 0 && (
             <MenuWrapper key={footerMenu?.[0]?.entity_id}>
-              <MenuTitle to={`/ja${footerMenu?.[0]?.url}`}>
+              <MenuTitle to={`/${lang}${footerMenu?.[0]?.url}`}>
                 <DangerouslyHtml value={footerMenu?.[0]?.title} />
               </MenuTitle>
 
@@ -186,7 +188,7 @@ const FooterTop = ({ footerAddress, footerMenu, footerContact }) => {
                 {footerMenu?.[0]?.children.map((link) => {
                   return (
                     <FooterLink
-                      to={`${INSPIRE_HOMEPAGE_URL}/ja${link.url}`}
+                      to={`${INSPIRE_HOMEPAGE_URL}/${lang}${link.url}`}
                       key={link.entity_id}
                       target="_blank"
                     >
@@ -206,7 +208,7 @@ const FooterTop = ({ footerAddress, footerMenu, footerContact }) => {
                 {footerMenu?.[1]?.children.map((link) => {
                   return (
                     <FooterLink
-                      to={`${INSPIRE_HOMEPAGE_URL}/ja${link.url}`}
+                      to={`${INSPIRE_HOMEPAGE_URL}/${lang}${link.url}`}
                       key={link.entity_id}
                       target="_blank"
                     >

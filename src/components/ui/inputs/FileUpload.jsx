@@ -7,7 +7,7 @@ import { Alert } from '@mui/material';
 
 import { DOWNLOAD_FILE_LIST_API_URL, UPLOAD_FILE_LIST_API_URL } from '@/constants/apiUrls';
 import {
-  AttatchmentSizeText,
+  AttachmentSizeText,
   FileFormatText,
   UploadFilesInvalidText,
   UploadFilesLimitRequiredText,
@@ -184,7 +184,7 @@ const FileUpload = ({ fileList, setFileList }) => {
         </p>
 
         <p>
-          <AttatchmentSizeText />
+          <AttachmentSizeText />
         </p>
       </Description>
 

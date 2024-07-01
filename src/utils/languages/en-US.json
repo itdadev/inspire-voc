@@ -2,7 +2,6 @@
   "lang-voice-of-customer" : "Voice of Customer",
   "lang-page-description-text" : "At INSPIRE Entertainment Resort, \nwe value the feedback and voices of our guests through our dedicated Customer Center.",
   "lang-switch-languages-text" : "Switch Languages",
-
   "lang-first-name-text" : "First Name",
   "lang-last-name-text" : "Last Name",
   "lang-phone-number-text" : "Phone Number",
@@ -18,7 +17,6 @@
   "lang-agree-privacy-policy-text" : "I agree to Privacy Policy",
   "lang-privacy-policy-text" : "Privacy Policy",
   "lang-submit-text" : "Submit",
-
   "lang-first-name-placeholder-text" : "Enter First Name",
   "lang-last-name-placeholder-text" : "Enter Last Name",
   "lang-phone-number-placeholder-text" : "Enter Phone Number",
@@ -26,7 +24,6 @@
   "lang-title-placeholder-text" : "Enter Title",
   "lang-content-placeholder-text" : "Enter Content",
   "lang-upload-files-placeholder-text" : "max 10MB, 5 files",
-
   "lang-first-name-required-text" : "Please enter your First Name",
   "lang-last-name-required-text" : "Please enter your Last Name",
   "lang-phone-number-required-text" : "Please enter Phone Number",
@@ -36,16 +33,15 @@
   "lang-option-required-text" : "Please enter Option",
   "lang-email-invalid-text" : "Please check Email Format",
   "lang-email-required-text" : "Please enter your Email Address",
-  "lang-title-required-text" : "Title is required",
-  "lang-content-required-text" : "Content is required",
+  "lang-title-required-text" : "Please enter Title",
+  "lang-content-required-text" : "Please enter Content",
+  "lang-captcha-required-text" : "Please check captcha",
   "lang-privacy-policy-required-text" : "Please agree to Privacy Policy",
   "lang-upload-files-limit-text" : "You can upload only one file",
   "lang-upload-files-invalid-text" : "Only files in jpg, jpeg or png format can be uploaded.",
   "lang-upload-files-size-limit-text" : "The max file size is 10MB",
-
   "lang-success-submit-message-1" : "Your Form has submitted successfully!",
   "lang-success-submit-message-2" : "Thank you for participating in the survey.",
-
   "lang-not-found-desc-1" : "We apologize for any inconvenience caused \n while using the site.",
   "lang-not-found-desc-2" : "The page you requested has either been deleted, moved, or the address is incorrect.",
   "lang-not-found-desc-3" : "Please navigate to a different page or check the address again.",
@@ -54,5 +50,12 @@
   "lang-connect-with-us" : "Connect with Us",
   "lang-hotel-reservation" : "Hotel Reservation",
   "lang-phone" : "Phone",
-  "lang-fax" : "Fax"
+  "lang-fax" : "Fax",
+
+  "lang-bus" : "Bus",
+  "lang-route-1": "INSPIRE >> ICN T1 >> INSPIRE",
+  "lang-route-2": "INSPIRE >> ICN T2 >> INSPIRE",
+  "lang-route-3": "INSPIRE >> MYEONG-DONG >> DAERIM >> INSPIRE",
+  "lang-route-4": "INSPIRE >> ANSAN >> JEONGWANG-DONG >> INSPIRE"
+
 }
