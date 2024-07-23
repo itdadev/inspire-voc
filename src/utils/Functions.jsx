@@ -188,3 +188,33 @@ export function checkFileExtension(file) {
 
   return correctForm.includes(ext);
 }
+
+export function emailIdPerLanguage() {
+  const lang = localStorage.getItem(LOCAL_STORAGE_LANGUAGE);
+
+  switch (lang) {
+    case 'en':
+      return process.env.REACT_APP_EMAIL_EN_ID;
+
+    case 'ko':
+      return process.env.REACT_APP_EMAIL_KO_ID;
+
+    case 'ja':
+      return process.env.REACT_APP_EMAIL_JA_ID;
+
+    case 'zh-hant':
+      return process.env.REACT_APP_EMAIL_HANS_ID;
+
+    case 'zh-hans':
+      return process.env.REACT_APP_EMAIL_HANT_ID;
+
+    default:
+      return process.env.REACT_APP_EMAIL_EN_ID;
+  }
+}
+
+export function getCodeName(arr, codeValue) {
+  if (arr) {
+    return arr?.filter((el) => el.code_value === codeValue)?.[0]?.name;
+  }
+}

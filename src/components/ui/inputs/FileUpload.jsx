@@ -188,7 +188,13 @@ const FileUpload = ({ fileList, setFileList }) => {
         </p>
       </Description>
 
-      <input type="file" id="images" onChange={uploadFileList} accept=".png, .jpg, .jpeg" />
+      <input
+        type="file"
+        id="images"
+        onClick={(e) => (e.target.value = '')}
+        onChange={uploadFileList}
+        accept=".png, .jpg, .jpeg"
+      />
 
       {maxFileLengthAlert && (
         <StyledAlert severity="warning">

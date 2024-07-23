@@ -16,9 +16,9 @@ import { GoogleRecaptcha } from '@/components/ui/item';
 import { PrimaryButton } from '@/components/ui/button';
 import { zodVoc } from '@/lib/react-hook-form/zodValidation';
 import { mq } from '@/lib/react-responsive/mediaQuery';
-import { getTimeIndex } from '@/utils/Functions';
+import { emailIdPerLanguage, getCodeName, getTimeIndex } from '@/utils/Functions';
 import { useGetCategoryList, useGetRouteList, useGetTimeList } from '@/hooks/GetReqeusts';
-import { usePostVoCForm } from '@/hooks/PostRequests';
+import { usePostEmailForm, usePostVoCForm } from '@/hooks/PostRequests';
 import { AgreeTerm } from '@/_root/pages/main/index';
 import {
   CategoryText,
@@ -32,6 +32,7 @@ import {
   TimeText,
   TitleText,
 } from '@/lib/react-intl/TranslatedTexts';
+import { LOCAL_STORAGE_LANGUAGE } from '@/constants/storageKey';
 
 const TextInputWrapper = styled.div(() => ({
   minHeight: '8rem',
@@ -68,11 +69,13 @@ const ButtonWrapper = styled.div(() => ({
 const VocForm = () => {
   const intl = useIntl();
   const navigate = useNavigate();
+  const lang = localStorage.getItem(LOCAL_STORAGE_LANGUAGE);
 
   const { categoryType, option1 } = useParams();
 
   const [fileList, setFileList] = useState([]);
   const [privacyPolicyOpen, setPrivacyPolicyOpen] = useState(false);
+  const [submittedData, setSubmittedData] = useState({});
 
   const now = dayjs().format('HH:mm');
 
@@ -91,7 +94,6 @@ const VocForm = () => {
       last_name: '',
       email: '',
       phone: '',
-      country_code: '',
       route: '5',
       time: '',
       category: '1',
@@ -114,7 +116,9 @@ const VocForm = () => {
   const { data: routeList } = useGetRouteList();
 
   // NOTE: post voc form
-  const { mutate: postVocForm, isSuccess } = usePostVoCForm();
+  const { mutate: postVocForm, isSuccess } = usePostVoCForm(setSubmittedData);
+
+  const { mutate: postEmailForm, isSuccess: emailSendSuccess } = usePostEmailForm();
 
   useEffect(() => {
     // NOTE: time url 기준으로 미리 선택
@@ -160,25 +164,78 @@ const VocForm = () => {
 
   useEffect(() => {
     // NOTE: after form submit success
-    if (isSuccess) {
-      resetField('first_name', { keepError: false });
-      resetField('last_name', { keepError: false });
-      resetField('phone', { keepError: false });
-      resetField('email', { keepError: false });
-      resetField('title', { keepError: false });
-      resetField('content', { keepError: false });
-      resetField('agreeToTerm', { keepError: false });
+    if (isSuccess && !emailSendSuccess) {
+      const customerEmailData = {
+        template_id: emailIdPerLanguage(),
+        target: [{ email: submittedData?.email }],
+        content: {
+          first_name: submittedData?.first_name,
+          last_name: submittedData?.last_name,
+          phone: submittedData?.phone,
+          email: submittedData?.email,
+          route: getCodeName(routeList, submittedData?.route),
+          time: getCodeName(timeList, submittedData?.time),
+          category: getCodeName(categoryList, submittedData?.category),
+          title: submittedData?.title,
+          content: submittedData?.content,
+          file_url: fileList?.[0]?.file_url,
+          file_name: fileList?.[0]?.origin_file_name,
+        },
+      };
 
-      navigate('/complete');
+      const managerEmailData = {
+        template_id: process.env.REACT_APP_EMAIL_INSPIRE_ID,
+        target: [
+          { email: process.env.REACT_APP_EMAIL_MANAGER_1 },
+          { email: process.env.REACT_APP_EMAIL_MANAGER_2 },
+        ],
+        content: {
+          ins_date: submittedData?.ins_date,
+          first_name: submittedData?.first_name,
+          last_name: submittedData?.last_name,
+          phone: submittedData?.phone,
+          email: submittedData?.email,
+          route: getCodeName(routeList, submittedData?.route),
+          time: getCodeName(timeList, submittedData?.time),
+          category: getCodeName(categoryList, submittedData?.category),
+          title: submittedData?.title,
+          content: submittedData?.content,
+          file_url: fileList?.[0]?.file_url,
+          file_name: fileList?.[0]?.origin_file_name,
+        },
+      };
 
-      setFileList([]);
+      postEmailForm(customerEmailData);
+
+      postEmailForm(managerEmailData);
     }
-  }, [isSuccess, resetField, navigate]);
+
+    if (emailSendSuccess) {
+      navigate(`/${lang}/complete`, { state: { complete: true } });
+    }
+  }, [
+    isSuccess,
+    resetField,
+    navigate,
+    emailSendSuccess,
+    categoryList,
+    fileList,
+    lang,
+    postEmailForm,
+    routeList,
+    timeList,
+    submittedData,
+  ]);
 
   const submitVocForm = useCallback(
     (data) => {
+      setSubmittedData(data);
+
       // NOTE: form submit
-      postVocForm({ ...data, file_list: fileList });
+      postVocForm({
+        ...data,
+        file_list: fileList,
+      });
     },
     [postVocForm, fileList]
   );

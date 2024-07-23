@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 import { PrimaryButton } from '@/components/ui/button';
@@ -9,6 +9,7 @@ import {
   SuccessSubmitMessage2Text,
   VisitWebsiteText,
 } from '@/lib/react-intl/TranslatedTexts';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Container = styled.div(() => ({
   display: 'flex',
@@ -26,11 +27,27 @@ const ButtonWrapper = styled.div(() => ({
 }));
 
 const FormCompleteScreen = () => {
+  const { state } = useLocation();
+  const navigate = useNavigate();
+
   const lang = localStorage.getItem(LOCAL_STORAGE_LANGUAGE) || 'en';
 
   const goToWebsite = useCallback(() => {
     window.open(`https://www.inspirekorea.com/${lang}`, '_blank', 'noopener, noreferrer');
   }, [lang]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!state?.complete) {
+      navigate('/not-found');
+    }
+  }, [state, navigate]);
 
   return (
     <Container>

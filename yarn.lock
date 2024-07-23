@@ -2242,12 +2242,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:^3.4.2":
-  version: 3.4.2
-  resolution: "@hookform/resolvers@npm:3.4.2"
+"@hookform/resolvers@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "@hookform/resolvers@npm:3.9.0"
   peerDependencies:
     react-hook-form: ^7.0.0
-  checksum: 5045c3b1bfa2cace97ab0708a25a5c65353a10e06b4992c43ab648cf09fa0e51cabbbec40144c53f3646d35b91823ba6a9e254156614649cefa503722900dd9a
+  checksum: 64a1e77ea2eeeba521ec624f2cea33ec2d20c60de12847b59520393780a9c8b92b3d76b7b3eeabadef85e8c776826f7bc9016fa90a890580c4ed75503c060dd1
   languageName: node
   linkType: hard
 
@@ -5438,7 +5438,7 @@ __metadata:
     "@emotion/react": ^11.11.4
     "@emotion/styled": ^11.11.5
     "@eslint/js": ^9.3.0
-    "@hookform/resolvers": ^3.4.2
+    "@hookform/resolvers": ^3.9.0
     "@mui/material": ^5.15.18
     "@remixicon/react": ^4.2.0
     "@tanstack/react-query": ^5.39.0
