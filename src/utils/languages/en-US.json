@@ -42,7 +42,7 @@
   "lang-upload-files-size-limit-text": "The max. attachment size is 10MB",
   "lang-success-submit-message-1": "Your form has been submitted successfully!",
   "lang-success-submit-message-2": "Thank you for participating in the survey.",
-  "lang-not-found-desc-1": "We apologize for any inconvenience caused while using the site.",
+  "lang-not-found-desc-1": "We apologize for any inconvenience\ncaused while using the site.",
   "lang-not-found-desc-2": "The page you requested has either been deleted, moved, or the address is incorrect.",
   "lang-not-found-desc-3": "Please navigate to a different page or check the website address again.",
   "lang-go-to-voc-text": "Go to main page",
